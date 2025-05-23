@@ -11,7 +11,7 @@ const navigateTo = (page) => {
 </script>
 
 <template>
-  <!-- ini azka -->
+  <!-- hamzah -->
   <div class="app">
     <component
       :is="currentPage === 'LibraryOnline' ? LibraryOnline : AnnouncementsLibrary"
