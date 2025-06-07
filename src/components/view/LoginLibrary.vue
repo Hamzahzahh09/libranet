@@ -1,6 +1,7 @@
 <script setup>
 import { reactive, ref, onMounted } from 'vue'
-import LibraryOnline from './LibraryOnline.vue'
+import { useRouter } from 'vue-router'
+const router = useRouter()
 
 const loginForm = reactive({
   email: '',
@@ -22,31 +23,53 @@ onMounted(() => {
 })
 
 function handleLogin() {
+  console.log('Login started') // Debug 1
   isLoading.value = true
 
   setTimeout(() => {
+    console.log('Login simulation complete') // Debug 2
     isLoading.value = false
     showSuccess.value = true
 
+    // Debug localStorage sebelum update
+    console.log('Before auth:', {
+      auth_token: localStorage.getItem('auth_token'),
+      savedLogin: localStorage.getItem('savedLogin')
+    })
+
+    localStorage.setItem('auth_token', 'token_simulasi_123')
+
     if (rememberMe.value) {
-      localStorage.setItem(
-        'savedLogin',
-        JSON.stringify({
-          email: loginForm.email,
-          password: loginForm.password,
-        }),
-      )
-    } else {
-      localStorage.removeItem('savedLogin')
+      localStorage.setItem('savedLogin', JSON.stringify({
+        email: loginForm.email,
+        password: loginForm.password,
+      }))
     }
 
-    // Redirect ke halaman LibraryOnline.vue
-    window.location.href = '/LibraryOnline'
-  }, 2000) // Simulasi delay login
+    // Debug localStorage setelah update
+    console.log('After auth:', {
+      auth_token: localStorage.getItem('auth_token'),
+      savedLogin: localStorage.getItem('savedLogin')
+    })
+
+    // Debug sebelum redirect
+    console.log('Attempting redirect to /library')
+
+    router.push('/library').then(() => {
+      console.log('Redirect successful') // Debug 3
+    }).catch(err => {
+      console.error('Redirect failed:', err) // Debug 4
+    })
+  }, 1500)
 }
 
 function closeAlert() {
   showSuccess.value = false
+}
+
+// Tambahkan stub untuk Google Login
+function handleGoogleLogin() {
+  alert('Fitur login dengan Google belum tersedia.')
 }
 </script>
 
@@ -78,7 +101,7 @@ function closeAlert() {
     <div class="w-full md:w-1/2 flex items-center justify-center p-8">
       <div class="w-full max-w-md">
         <div class="text-center mb-8">
-          <img src="C:\vscode\Projek-PAS\src\assets\logolibranet.png" class="h-12 w-12 mx-auto" alt="Library Logo" />
+          <img src="https://i.imgur.com/2Nat6V1.png" class="h-12 w-12 mx-auto" alt="Library Logo" />
           <h1 class="text-3xl font-bold text-gray-900 mt-4">Libranet</h1>
         </div>
 
@@ -132,7 +155,7 @@ function closeAlert() {
             </div>
 
             <button type="submit"
-              class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium py-3 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all shadow-md" @click="LibraryOnline">
+              class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium py-3 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all shadow-md">
               Masuk
             </button>
           </form>
@@ -166,7 +189,8 @@ function closeAlert() {
     <!-- Right Side - Illustration -->
     <div class="hidden md:flex md:w-1/2 bg-gradient-to-br from-blue-50 to-indigo-50 items-center justify-center p-12">
       <div class="text-center">
-        <img src="/src/assets/book.png" alt="Person flying with books" class="w-full max-w-lg mx-auto animate-float" />
+        <img src="https://i.imgur.com/oDGRaOp.png" alt="Person flying with books"
+          class="w-full max-w-lg mx-auto animate-float" />
         <h3 class="text-2xl font-bold text-gray-800 mt-8">Jelajahi Dunia Literasi</h3>
         <p class="text-gray-600 mt-2 max-w-md mx-auto">
           Akses ribuan koleksi buku digital dari berbagai genre dan penulis terkenal
