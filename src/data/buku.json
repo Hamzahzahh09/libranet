@@ -1,58 +1,36 @@
 {
-  "popularBooks": [
+  "books": [
     {
       "title": "Atomic Habits: Perubahan Kecil yang Memberikan Hasil Luar Biasa",
       "author": "James Clear",
-      "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/9781847941848_Atomic-Habits.jpg",
+      "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/products/-at5xvm154.jpg",
       "rating": 4.8,
+      "isNew": true,
       "borrowed": 156
     },
     {
       "title": "Filosofi Teras: Filsafat Yunani-Romawi Kuno untuk Mental Tangguh Masa Kini",
       "author": "Henry Manampiring",
-      "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/9786024246945_Filosofi-Teras.jpg",
+      "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/filosofi_teras_hc.png",
       "rating": 4.7,
+      "isNew": true,
       "borrowed": 132
     },
     {
       "title": "Laut Bercerita",
       "author": "Leila S. Chudori",
-      "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/9786024246945_Laut-Bercerita.jpg",
+      "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/9786024246945_Laut-Bercerita.png",
       "rating": 4.9,
+      "isNew": true,
       "borrowed": 145
     },
     {
       "title": "Sapiens: Riwayat Singkat Umat Manusia",
       "author": "Yuval Noah Harari",
-      "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/9786024246945_Sapiens.jpg",
+      "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/img20210506_16025717.jpg",
       "rating": 4.6,
+      "isNew": true,
       "borrowed": 128
-    }
-  ],
-  "newBooks": [
-    {
-      "title": "The Creative Act: A Way of Being",
-      "author": "Rick Rubin",
-      "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/9780593652886_The-Creative-Act.jpg",
-      "addedDate": "2 hari lalu"
-    },
-    {
-      "title": "Building a Second Brain: A Proven Method to Organize Your Digital Life and Unlock Your Creative Potential",
-      "author": "Tiago Forte",
-      "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/9781982167387_Building-a-Second-Brain.jpg",
-      "addedDate": "1 minggu lalu"
-    },
-    {
-      "title": "Outlive: The Science and Art of Longevity",
-      "author": "Peter Attia",
-      "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/9780593236598_Outlive.jpg",
-      "addedDate": "1 minggu lalu"
-    },
-    {
-      "title": "The Wager: A Tale of Shipwreck, Mutiny and Murder",
-      "author": "David Grann",
-      "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/9780385534260_The-Wager.jpg",
-      "addedDate": "3 hari lalu"
     }
   ]
 }
