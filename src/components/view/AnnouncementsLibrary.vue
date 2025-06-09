@@ -34,30 +34,62 @@ const navigateTo = (path) => {
 </script>
 
 <template>
-    <!-- Navbar -->
+    <!-- Header yang lebih modern -->
     <header class="sticky top-0 z-50 bg-white shadow-md">
       <div class="container mx-auto px-6 py-4 flex justify-between items-center">
         <div class="flex items-center space-x-3 cursor-pointer" @click="navigateTo('/')">
-          <img src="https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/UgVLgrqrgd.png" alt="Libranet Logo"
-            class="w-10 h-10">
+          <img src="https://i.imgur.com/2Nat6V1.png" alt="Libranet Logo" class="w-10 h-10">
           <span class="text-2xl font-semibold text-blue-900">Libranet</span>
         </div>
 
         <nav class="hidden md:flex space-x-8">
-          <router-link to="/library" class="text-lg font-semibold hover:text-blue-600 transition"
-            active-class="text-blue-600" exact>Beranda</router-link>
-          <router-link to="/pengumuman" class="text-lg font-semibold hover:text-blue-600 transition"
-            active-class="text-blue-600">Pengumuman</router-link>
-          <router-link to="/koleksi" class="text-lg font-semibold hover:text-blue-600 transition"
-            active-class="text-blue-600">Koleksi</router-link>
-          <router-link to="/populer" class="text-lg font-semibold hover:text-blue-600 transition"
-            active-class="text-blue-600">Populer</router-link>
+          <router-link
+            to="/library"
+            class="text-lg font-semibold text-gray-700 hover:text-blue-600 transition relative py-2"
+            active-class="text-blue-600 font-bold"
+            exact
+          >
+            Beranda
+            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+          </router-link>
+          <router-link
+            to="/pengumuman"
+            class="text-lg font-semibold text-gray-700 hover:text-blue-600 transition relative py-2"
+            active-class="text-blue-600 font-bold"
+          >
+            Pengumuman
+          </router-link>
+          <router-link
+            to="/collection"
+            class="text-lg font-semibold text-gray-700 hover:text-blue-600 transition relative py-2"
+            active-class="text-blue-600 font-bold"
+          >
+            Koleksi
+          </router-link>
+          <router-link
+            to="/populer"
+            class="text-lg font-semibold text-gray-700 hover:text-blue-600 transition relative py-2"
+            active-class="text-blue-600 font-bold"
+          >
+            Populer
+          </router-link>
         </nav>
 
         <div class="flex items-center space-x-6">
-          <img src="https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/JzZcgNsGvt.png" alt="Notification"
-            class="w-9 h-9 rounded-full cursor-pointer">
-          <span class="text-lg font-semibold cursor-pointer">Account</span>
+          <div class="relative">
+            <img
+              src="https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/JzZcgNsGvt.png"
+              alt="Notification"
+              class="w-9 h-9 rounded-full cursor-pointer hover:opacity-80 transition"
+            >
+            <span class="absolute top-0 right-0 w-3 h-3 bg-red-500 rounded-full"></span>
+          </div>
+          <div class="flex items-center space-x-2 cursor-pointer group">
+            <span class="text-lg font-semibold text-gray-700 group-hover:text-blue-600 transition">Account</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500 group-hover:text-blue-600 transition" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </div>
         </div>
       </div>
     </header>

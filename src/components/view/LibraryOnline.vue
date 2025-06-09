@@ -6,8 +6,7 @@ import booksData from '@/data/buku.json'
 
 const router = useRouter()
 const bookArray = Array.isArray(booksData) ? booksData : booksData.books
-const popularBooks = ref(bookArray.slice(0, 4))
-const newBooks = ref(bookArray.filter((book) => book.isNew).slice(0, 4))
+const popularBooks = ref(bookArray.slice(0, 12))
 const searchQuery = ref('')
 const selectedCategory = ref('kategori')
 const showDropdown = ref(false)
@@ -52,7 +51,7 @@ const searchBooks = () => {
 
         <nav class="hidden md:flex space-x-8">
           <router-link
-            to="/"
+            to="/library"
             class="text-lg font-semibold text-gray-700 hover:text-blue-600 transition relative py-2"
             active-class="text-blue-600 font-bold"
             exact
@@ -137,7 +136,7 @@ const searchBooks = () => {
     </section>
 
     <!-- Search Section dengan efek lebih interaktif -->
-    <section class="container mx-auto px-6 py-8 text-center bg-white rounded-xl shadow-sm mx-4 md:mx-auto max-w-5xl">
+    <section class="container mx-auto px-6 py-8 text-center bg-white rounded-xl shadow-sm md:mx-auto max-w-5xl">
       <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-gray-800">Temukan Buku Yang Kamu Mau Di Sini</h2>
       <div class="flex flex-col md:flex-row justify-center items-center gap-4 max-w-3xl mx-auto">
         <div class="relative w-full md:w-auto">
@@ -227,10 +226,10 @@ const searchBooks = () => {
             <div class="p-5">
               <h3 class="font-semibold text-lg text-gray-800 mb-2 line-clamp-1">{{ book.title }}</h3>
               <div class="flex justify-between items-center">
-                <span class="text-sm text-gray-500">{{ book.pages }} halaman</span>
-                <button class="text-blue-600 hover:text-blue-800 text-sm font-medium transition">
+                <span class="text-sm text-gray-500">{{ book.borrowed }} halaman</span>
+                <router-link to="/detail" class="text-blue-600 hover:text-blue-800 text-sm font-medium transition">
                   Detail
-                </button>
+                </router-link>
               </div>
             </div>
           </div>
@@ -238,59 +237,6 @@ const searchBooks = () => {
       </div>
     </section>
 
-    <!-- New Books Section -->
-    <section class="py-12 bg-white">
-      <div class="container mx-auto px-6">
-        <div class="flex justify-between items-center mb-8">
-          <h2 class="text-3xl font-semibold text-gray-800">
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-green-500">Buku Terbaru</span>
-          </h2>
-          <router-link
-            to="/collection"
-            class="text-blue-600 hover:text-blue-800 font-medium flex items-center transition"
-          >
-            Lihat Semua
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-            </svg>
-          </router-link>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          <div
-            v-for="(book, index) in newBooks"
-            :key="'new-' + index"
-            class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group border border-gray-100"
-          >
-            <div class="h-56 relative overflow-hidden">
-              <img
-                :src="book.image"
-                :alt="book.title"
-                class="w-full h-full object-cover transition duration-500 group-hover:scale-105"
-              >
-              <div class="absolute top-3 right-3 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full">
-                BARU
-              </div>
-              <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm rounded-xl px-3 py-1 flex items-center shadow-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-yellow-500 mr-1" viewBox="0 0 20 20" fill="currentColor">
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                </svg>
-                <span class="text-sm font-medium text-gray-700">{{ book.rating }}/5</span>
-              </div>
-            </div>
-            <div class="p-5">
-              <h3 class="font-semibold text-lg text-gray-800 mb-2 line-clamp-1">{{ book.title }}</h3>
-              <div class="flex justify-between items-center">
-                <span class="text-sm text-gray-500">{{ book.pages }} halaman</span>
-                <button class="text-blue-600 hover:text-blue-800 text-sm font-medium transition">
-                  Pinjam
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- Visit Section dengan peta interaktif -->
     <section class="bg-gradient-to-r from-green-400 to-green-500 py-16">

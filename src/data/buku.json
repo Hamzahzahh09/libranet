@@ -1,36 +1,112 @@
 {
   "books": [
     {
-      "title": "Atomic Habits: Perubahan Kecil yang Memberikan Hasil Luar Biasa",
-      "author": "James Clear",
-      "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/products/-at5xvm154.jpg",
-      "rating": 4.8,
-      "isNew": true,
-      "borrowed": 156
-    },
-    {
-      "title": "Filosofi Teras: Filsafat Yunani-Romawi Kuno untuk Mental Tangguh Masa Kini",
-      "author": "Henry Manampiring",
-      "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/filosofi_teras_hc.png",
-      "rating": 4.7,
-      "isNew": true,
-      "borrowed": 132
-    },
-    {
-      "title": "Laut Bercerita",
-      "author": "Leila S. Chudori",
-      "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/9786024246945_Laut-Bercerita.png",
-      "rating": 4.9,
-      "isNew": true,
-      "borrowed": 145
-    },
-    {
-      "title": "Sapiens: Riwayat Singkat Umat Manusia",
-      "author": "Yuval Noah Harari",
-      "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/img20210506_16025717.jpg",
-      "rating": 4.6,
-      "isNew": true,
-      "borrowed": 128
-    }
+    "title": "Jurus Jitu Mengelola Emosi",
+    "author": "Tidak diketahui",
+    "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/jurus.jpg",
+    "rating": 4.8,
+    "isNew": false,
+    "borrowed": 156,
+    "starIcon": "/icons/star.svg"
+  },
+  {
+    "title": "A Thousand Splendid Suns",
+    "author": "Khaled Hosseini",
+    "image": "https://id-test-11.slatic.net/p/db71f971a307a8980fc7a3b051e5f283.jpg",
+    "rating": 4.6,
+    "isNew": false,
+    "borrowed": 321,
+    "starIcon": "/icons/star.svg"
+  },
+  {
+    "title": "Dongeng anak Populer...",
+    "author": "Tidak diketahui",
+    "image": "https://bintangpusnas.perpusnas.go.id/api/getImage/978-602-5689-49-9.jpg",
+    "rating": 4.8,
+    "isNew": false,
+    "borrowed": 87
+,
+"starIcon": "/icons/star.svg"  },
+  {
+    "title": "Jurus Jitu Mengelola Emosi",
+    "author": "Tidak diketahui",
+    "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/Cover_Great_At_Work_2022_page-0001.jpg",
+    "rating": 4.8,
+    "isNew": false,
+    "borrowed": 110,
+    "starIcon": "/icons/star.svg"
+  },
+  {
+    "title": "Cantik Itu Luka",
+    "author": "Eka Kurniawan",
+    "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/9786020366517_Cantik-Itu-Luka-Hard-Cover---Limited-Edition.jpg",
+    "rating": 4.5,
+    "isNew": false,
+    "borrowed": 156,
+    "starIcon": "/icons/star.svg"
+  },
+  {
+    "title": "When The Sky Is Blooming",
+    "author": "Tidak diketahui",
+    "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/products/3hl-1-7imn.jpg",
+    "rating": 4.8,
+    "isNew": false,
+    "borrowed": 258,
+    "starIcon": "/icons/star.svg"
+  },
+  {
+    "title": "Seorang Pria Yang Melalui...",
+    "author": "Tidak diketahui",
+    "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/picture_meta/2023/12/1/fj23u35u6cqqpb2tpz5x34.jpg",
+    "rating": 4.6,
+    "isNew": false,
+    "borrowed": 237,
+    "starIcon": "/icons/star.svg"
+  },
+  {
+    "title": "Hujan",
+    "author": "Tere Liye",
+    "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/img20220905_11493451.jpg",
+    "rating": 4.6,
+    "isNew": false,
+    "borrowed": 258,
+    "starIcon": "/icons/star.svg"
+  },
+  {
+    "title": "Pulang (2023)",
+    "author": "Leila S. Chudori",
+    "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/picture_meta/2023/12/20/xoid3bznddxudnurccgqxi.jpg",
+    "rating": 4.6,
+    "isNew": false,
+    "borrowed": 462,
+    "starIcon": "/icons/star.svg"
+  },
+  {
+    "title": "3726 MDPL",
+    "author": "Tidak diketahui",
+    "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/products/9397p4603v.jpg",
+    "rating": 4.6,
+    "isNew": false,
+    "borrowed": 260,
+    "starIcon": "/icons/star.svg"
+  },
+  {
+    "title": "Komputer Grafis, Belajar...",
+    "author": "Tidak diketahui",
+    "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/KOMPUTER_GRAFIS.jpg",
+    "rating": 4.7,
+    "isNew": false,
+    "borrowed": 237,
+    "starIcon": "/icons/star.svg"
+  },
+  {
+    "title": "Malam Terakhir",
+    "author": "Tidak diketahui",
+    "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/img20220321_10525755.jpg",
+    "rating": 4.6,
+    "isNew": false,
+    "borrowed": 119,
+    "starIcon": "/icons/star.svg"
+  }
   ]
 }

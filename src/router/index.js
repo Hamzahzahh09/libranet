@@ -6,6 +6,7 @@ import LibraryOnline from '../components/view/LibraryOnline.vue'
 import CollectionsLibrary from '@/components/view/CollectionsLibrary.vue'
 import DetailView from '@/components/view/DetailView.vue'
 import AnnouncementsLibrary from '@/components/view/AnnouncementsLibrary.vue'
+import PopularLibrary from '@/components/view/PopularLibrary.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -39,6 +40,11 @@ const router = createRouter({
       path: '/pengumuman',
       name: 'pengumuman',
       component: AnnouncementsLibrary,
+    },
+    {
+      path: '/populer',
+      name: 'populer',
+      component: PopularLibrary,
     },
     {
       path: '/:pathMatch(.*)*',
