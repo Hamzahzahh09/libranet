@@ -1,16 +1,16 @@
 <script setup>
 import { ref } from 'vue';
-import { useRoute } from 'vue-router';
+// import { useRoute } from 'vue-router';
 
 
 
 const searchQuery = ref("");
 
-const toggleNavItem = (index) => {
-  navItems.value.forEach((item, i) => {
-    item.active = i === index;
-  });
-};
+// const toggleNavItem = (index) => {
+//   navItems.value.forEach((item, i) => {
+//     item.active = i === index;
+//   });
+// };
 </script>
 
 <template>

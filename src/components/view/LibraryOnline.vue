@@ -6,7 +6,7 @@ import booksData from '@/data/buku.json'
 
 const router = useRouter()
 const bookArray = Array.isArray(booksData) ? booksData : booksData.books
-const popularBooks = ref(bookArray.slice(0, 12))
+const popularBooks = ref(bookArray.slice(0, 8))
 const searchQuery = ref('')
 const selectedCategory = ref('kategori')
 const showDropdown = ref(false)
@@ -82,7 +82,7 @@ const searchBooks = () => {
           </router-link>
         </nav>
 
-        <div class="flex items-center space-x-6">
+        <router-link to="/profile" class="flex items-center space-x-6">
           <div class="relative">
             <img
               src="https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/JzZcgNsGvt.png"
@@ -97,7 +97,7 @@ const searchBooks = () => {
               <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
             </svg>
           </div>
-        </div>
+        </router-link>
       </div>
     </header>
 

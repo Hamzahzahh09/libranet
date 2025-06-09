@@ -7,6 +7,7 @@ import CollectionsLibrary from '@/components/view/CollectionsLibrary.vue'
 import DetailView from '@/components/view/DetailView.vue'
 import AnnouncementsLibrary from '@/components/view/AnnouncementsLibrary.vue'
 import PopularLibrary from '@/components/view/PopularLibrary.vue'
+import ProfileLibranet from '@/components/view/ProfileLibranet.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -45,6 +46,11 @@ const router = createRouter({
       path: '/populer',
       name: 'populer',
       component: PopularLibrary,
+    },
+    {
+      path: '/profile',
+      name: 'profile',
+      component: ProfileLibranet,
     },
     {
       path: '/:pathMatch(.*)*',
