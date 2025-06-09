@@ -1,6 +1,8 @@
+import { createApp } from 'vue'
+import App from './App.vue'
+import router from './router'
 import './assets/main.css'
 
-import { createApp } from 'vue'
-import LibraryOnline from './components/Library/LibraryOnline.vue'
+const app = createApp(App);
 
-createApp(LibraryOnline).mount('#app')
+createApp(App).use(router).mount('#app')
