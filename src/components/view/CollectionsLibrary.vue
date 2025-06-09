@@ -1,364 +1,197 @@
 <script setup>
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+
+const books = ref([
+  {
+    id: 1,
+    title: "Jurus Jitu Mengelola Emosi",
+    pages: 156,
+    rating: 4.9,
+    cover: "https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/woinEM9hOM.png",
+    starIcon: "https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/fecvQDFOfP.png"
+  },
+  {
+    id: 2,
+    title: "A Thousand Splendid Suns",
+    pages: 321,
+    rating: 4.8,
+    cover: "https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/bNj5HO27iD.png",
+    starIcon: "https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/1tvGLpt8Zw.png"
+  },
+  {
+    id: 3,
+    title: "Jurus Jitu Mengelola Emosi",
+    pages: 67,
+    rating: 4.9,
+    cover: "https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/qiM9uviJj6.png",
+    starIcon: "https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/SogcCUb8Xc.png"
+  },
+  {
+    id: 4,
+    title: "Jurus Jitu Mengelola Emosi",
+    pages: 156,
+    rating: 4.9,
+    cover: "https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/7ReZsM3ypu.png",
+    starIcon: "https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/2fnaTbKgmD.png"
+  },
+  {
+    id: 5,
+    title: "Cantik Itu Luka",
+    pages: 156,
+    rating: 4.9,
+    cover: "https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/kyU8anMJwv.png",
+    starIcon: "https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/HDsweVUGjO.png"
+  },
+  {
+    id: 6,
+    title: "When The Sky Is Blooming",
+    pages: 258,
+    rating: 4.8,
+    cover: "https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/HFJi4oZjtR.png",
+    starIcon: "https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/W0PUAbX0Ok.png"
+  },
+  {
+    id: 7,
+    title: "Seorang Pria Yang Melalui",
+    pages: 237,
+    rating: 4.9,
+    cover: "https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/qQcj8MbHKb.png",
+    starIcon: "https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/1Dk1ndRnB4.png"
+  },
+  {
+    id: 8,
+    title: "Hujan",
+    pages: 258,
+    rating: 4.9,
+    cover: "https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/etaPnYMGwG.png",
+    starIcon: "https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/ZdeDyeXJie.png"
+  }
+])
+
+const searchQuery = ref('')
+const filteredBooks = ref([...books.value])
+const visibleBooks = ref(4)
+const router = useRouter()
+
+const navigateTo = (path) => {
+  router.push(path)
+}
+
+const searchBooks = () => {
+  if (searchQuery.value.trim() === '') {
+    filteredBooks.value = [...books.value]
+  } else {
+    filteredBooks.value = books.value.filter(book =>
+      book.title.toLowerCase().includes(searchQuery.value.toLowerCase())
+    )
+  }
+}
+const loadMore = () => {
+  visibleBooks.value = Math.min(visibleBooks.value + 4, books.value.length)
+}
+
+const currentBooks = () => {
+  return filteredBooks.value.slice(0, visibleBooks.value)
+}
 </script>
 
 <template>
-  <div
-    class="main-container w-[1280px] h-[1275px] bg-[rgba(255,255,255,0.95)] relative overflow-hidden mx-auto my-0"
-  >
-    <div
-      class="w-[1280px] h-[101px] bg-[#fff] relative shadow-[0_7px_4px_0_rgba(0,0,0,0.25)] z-[118] mt-0 mr-0 mb-0 ml-0"
-    >
-      <div
-        class="w-[15.334px] h-[9.072px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/Q0NdukXfTP.png)] bg-[length:100%_100%] bg-no-repeat relative mt-0 mr-0 mb-0 ml-[0.33px]"
-      >
-        <div
-          class="w-full h-full bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/conduRJ7zP.png)] bg-[length:100%_100%] bg-no-repeat absolute top-0 left-0 z-[1]"
-        ></div>
-      </div>
-      <div
-        class="w-[1223px] h-[40px] relative z-[127] mt-[21.928px] mr-0 mb-0 ml-[24px]"
-      >
-        <div
-          class="flex w-[146px] h-[40px] gap-[10px] items-center flex-nowrap absolute top-0 left-0 overflow-hidden z-[127]"
-        >
-          <div
-            class="w-[40px] h-[40px] shrink-0 bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/SWoCFLaDyt.png)] bg-cover bg-no-repeat relative z-[128]"
-          ></div>
-          <div class="w-[96px] h-[29px] shrink-0 relative z-[129]">
-            <span
-              class="flex h-[29px] justify-start items-start font-['Inter'] text-[24px] font-semibold leading-[29px] text-[#1e3a8a] absolute top-0 left-0 text-left whitespace-nowrap z-[130]"
-              >Libranet</span
-            >
-          </div>
+  <div class="min-h-screen bg-white bg-opacity-95 mx-auto max-w-[1280px] px-4">
+    <!-- Header -->
+   <header class="sticky top-0 z-50 bg-white shadow-md">
+      <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="flex items-center space-x-3 cursor-pointer" @click="navigateTo('/')">
+          <img src="https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/UgVLgrqrgd.png" alt="Libranet Logo"
+            class="w-10 h-10">
+          <span class="text-2xl font-semibold text-blue-900">Libranet</span>
         </div>
-        <div
-          class="flex w-[118px] h-[40px] justify-between items-center absolute top-0 left-[1105px] z-[121]"
-        >
-          <div
-            class="w-[40px] h-[40px] shrink-0 bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/sqZgpsW6Bw.png)] bg-cover bg-no-repeat rounded-[50%] relative z-[120]"
-          ></div>
-          <span
-            class="h-[22px] shrink-0 font-['Inter'] text-[18px] font-semibold leading-[21.784px] text-[#000] relative text-left whitespace-nowrap z-[121]"
-            >Fulanah</span
+
+        <nav class="hidden md:flex space-x-8">
+          <router-link to="/" class="text-lg font-semibold hover:text-blue-600 transition" active-class="text-blue-600"
+            exact>Beranda</router-link>
+          <router-link to="/pengumuman" class="text-lg font-semibold hover:text-blue-600 transition"
+            active-class="text-blue-600">Pengumuman</router-link>
+          <router-link to="/collection" class="text-lg font-semibold hover:text-blue-600 transition"
+            active-class="text-blue-600">Koleksi</router-link>
+          <router-link to="/populer" class="text-lg font-semibold hover:text-blue-600 transition"
+            active-class="text-blue-600">Populer</router-link>
+        </nav>
+
+        <div class="flex items-center space-x-6">
+          <img src="https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/JzZcgNsGvt.png" alt="Notification"
+            class="w-9 h-9 rounded-full cursor-pointer">
+          <span class="text-lg font-semibold cursor-pointer">Account</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="py-8">
+      <!-- Page Title -->
+      <div class="text-center mb-8 relative">
+        <h1 class="text-5xl font-bold mb-2">Koleksi</h1>
+        <div class="w-48 h-1 bg-gradient-to-r from-green-400 to-blue-500 mx-auto"></div>
+      </div>
+
+      <!-- Search and Filter -->
+      <div class="flex flex-col md:flex-row justify-between items-center mb-8 px-4">
+        <span class="text-lg font-medium mb-4 md:mb-0">Koleksi kamu :</span>
+        <div class="relative w-full md:w-64">
+          <input
+            v-model="searchQuery"
+            @input="searchBooks"
+            type="text"
+            placeholder="Cari buku..."
+            class="w-full pl-4 pr-10 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-400"
+          >
+          <img
+            src="https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/LyG3Uagnqe.png"
+            alt="Search"
+            class="absolute right-3 top-2.5 w-5 h-5"
           >
         </div>
-        <span
-          class="flex h-[22px] justify-start items-start font-['Inter'] text-[18px] font-semibold leading-[21.784px] text-[#000] absolute top-[9px] left-[365px] text-left whitespace-nowrap z-[123]"
-          >Beranda</span
-        ><span
-          class="flex h-[22px] justify-start items-start font-['Inter'] text-[18px] font-semibold leading-[21.784px] text-[#000] absolute top-[9px] left-[498px] text-left whitespace-nowrap z-[124]"
-          >Pengumuman</span
-        ><span
-          class="flex h-[22px] justify-start items-start font-['Inter'] text-[18px] font-semibold leading-[21.784px] text-[#000] absolute top-[9px] left-[678px] text-left whitespace-nowrap z-[125]"
-          >koleksi</span
-        ><span
-          class="flex h-[22px] justify-start items-start font-['Inter'] text-[18px] font-semibold leading-[21.784px] text-[#000] absolute top-[9px] left-[799px] text-left whitespace-nowrap z-[126]"
-          >Populer</span
-        >
       </div>
-    </div>
-    <div
-      class="w-[1116px] h-[79px] relative z-[9] mt-[54px] mr-0 mb-0 ml-[54px]"
-    >
-      <div
-        class="w-[2.7%] h-[40.72%] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/NXxCX7trrn.png)] bg-[length:100%_100%] bg-no-repeat absolute top-[-1.9%] left-[-0.13%] z-[9]"
-      ></div>
-      <span
-        class="flex h-[77px] justify-start items-start font-['Inter'] text-[64px] font-semibold leading-[77px] text-[#000] absolute top-[2px] left-[calc(50%-80px)] text-left capitalize whitespace-nowrap z-[3]"
-        >Koleksi</span
-      >
-      <div
-        class="w-[163px] h-[41px] bg-[rgba(217,217,217,0.6)] rounded-[1px] border-solid border border-[rgba(0,0,0,0.4)] absolute top-[29px] left-[953px] z-[6]"
-      >
-        <span
-          class="flex h-[24px] justify-start items-start font-['Inter'] text-[20px] font-medium leading-[24px] text-[rgba(0,0,0,0.6)] absolute top-[7px] left-[32px] text-left whitespace-nowrap z-[7]"
-          >Serch</span
-        >
+
+      <!-- Book Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4">
         <div
-          class="w-[24px] h-[24px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/LyG3Uagnqe.png)] bg-cover bg-no-repeat rounded-[1px] absolute top-[7px] left-[104px] overflow-hidden z-[8]"
-        ></div>
-      </div>
-    </div>
-    <div
-      class="w-[378px] h-[3.032px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/GYeurtfbvv.png)] bg-cover bg-no-repeat relative z-[4] mt-[3px] mr-0 mb-0 ml-[450px]"
-    ></div>
-    <span
-      class="block h-[24px] font-['Inter'] text-[20px] font-medium leading-[24px] text-[#000] relative text-left capitalize whitespace-nowrap z-10 mt-[25.968px] mr-0 mb-0 ml-[110px]"
-      >Koleksi kamu :</span
-    >
-    <div
-      class="flex w-[1059px] h-[271px] justify-between items-center relative z-[52] mt-[46px] mr-0 mb-0 ml-[110px]"
-    >
-      <div
-        class="w-[243px] h-[271px] shrink-0 bg-[#fff] rounded-[10px] relative z-[17]"
-      >
-        <div
-          class="w-[242px] h-[195px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/woinEM9hOM.png)] bg-cover bg-no-repeat rounded-[10px] relative z-[18] mt-0 mr-0 mb-0 ml-px"
+          v-for="book in currentBooks()"
+          :key="book.id"
+          class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
         >
-          <div
-            class="w-[85px] h-[37px] bg-[#29ff90] rounded-[12px] relative z-[19] mt-[148px] mr-0 mb-0 ml-[10px]"
-          >
-            <span
-              class="flex h-[17px] justify-start items-start font-['Inter'] text-[14px] font-normal leading-[16.943px] text-[rgba(0,0,0,0.5)] absolute top-[10px] left-[36px] text-left capitalize whitespace-nowrap z-[23]"
+          <div class="relative h-48 overflow-hidden">
+            <img
+              :src="book.cover"
+              :alt="book.title"
+              class="w-full h-full object-cover"
             >
-              4.9/5</span
-            >
-            <div
-              class="w-[16px] h-[16px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/fecvQDFOfP.png)] bg-cover bg-no-repeat absolute top-[10px] left-[10px] overflow-hidden z-[24]"
-            ></div>
-          </div>
-        </div>
-        <span
-          class="block h-[19px] font-['Inter'] text-[16px] font-medium leading-[19px] text-[#000] relative text-left capitalize whitespace-nowrap z-[25] mt-[14px] mr-0 mb-0 ml-[14px]"
-          >jurus jitu mengelola emosi</span
-        ><span
-          class="block h-[17px] font-['Inter'] text-[14px] font-normal leading-[16.943px] text-[rgba(0,0,0,0.5)] relative text-left capitalize whitespace-nowrap z-[26] mt-[14px] mr-0 mb-0 ml-[14px]"
-          >156 halaman</span
-        >
-      </div>
-      <div
-        class="w-[243px] h-[271px] shrink-0 bg-[#fff] rounded-[10px] relative z-[28]"
-      >
-        <div
-          class="w-[242px] h-[195px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/bNj5HO27iD.png)] bg-cover bg-no-repeat rounded-[10px] relative z-[29] mt-0 mr-0 mb-0 ml-px"
-        >
-          <div
-            class="w-[242px] h-[195px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/tzZUmJRYxX.png)] bg-cover bg-no-repeat rounded-[10px] absolute top-0 left-0 z-30"
-          >
-            <div
-              class="w-[85px] h-[37px] bg-[#29ff90] rounded-[12px] relative z-[31] mt-[148px] mr-0 mb-0 ml-[10px]"
-            >
-              <span
-                class="flex h-[17px] justify-start items-start font-['Inter'] text-[14px] font-normal leading-[16.943px] text-[rgba(0,0,0,0.5)] absolute top-[10px] left-[36px] text-left capitalize whitespace-nowrap z-[35]"
+            <div class="absolute bottom-2 left-2 bg-green-400 rounded-xl px-3 py-1 flex items-center">
+              <img
+                :src="book.starIcon"
+                alt="Star"
+                class="w-4 h-4 mr-1"
               >
-                4.8/5</span
-              >
-              <div
-                class="w-[16px] h-[16px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/1tvGLpt8Zw.png)] bg-cover bg-no-repeat absolute top-[10px] left-[10px] overflow-hidden z-[36]"
-              ></div>
+              <span class="text-sm">{{ book.rating }}/5</span>
             </div>
           </div>
-        </div>
-        <span
-          class="block h-[19px] font-['Inter'] text-[16px] font-medium leading-[19px] text-[#000] relative text-left capitalize whitespace-nowrap z-[37] mt-[14px] mr-0 mb-0 ml-[14px]"
-          >a thousand splendid suns</span
-        ><span
-          class="block h-[17px] font-['Inter'] text-[14px] font-normal leading-[16.943px] text-[rgba(0,0,0,0.5)] relative text-left capitalize whitespace-nowrap z-[38] mt-[14px] mr-0 mb-0 ml-[14px]"
-          >321 halaman</span
-        >
-      </div>
-      <div
-        class="w-[243px] h-[271px] shrink-0 bg-[#fff] rounded-[10px] relative z-40"
-      >
-        <div
-          class="w-[242px] h-[195px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/qiM9uviJj6.png)] bg-cover bg-no-repeat rounded-[10px] relative z-[41] mt-0 mr-0 mb-0 ml-px"
-        >
-          <div
-            class="w-[242px] h-[195px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/UGNmV92gU9.png)] bg-cover bg-no-repeat rounded-[10px] relative z-[42] mt-0 mr-0 mb-0 ml-px"
-          >
-            <div
-              class="w-[85px] h-[37px] bg-[#29ff90] rounded-[12px] relative z-[43] mt-[148px] mr-0 mb-0 ml-[9px]"
-            >
-              <span
-                class="flex h-[17px] justify-start items-start font-['Inter'] text-[14px] font-normal leading-[16.943px] text-[rgba(0,0,0,0.5)] absolute top-[10px] left-[36px] text-left capitalize whitespace-nowrap z-[47]"
-              >
-                4.9/5</span
-              >
-              <div
-                class="w-[16px] h-[16px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/SogcCUb8Xc.png)] bg-cover bg-no-repeat absolute top-[10px] left-[10px] overflow-hidden z-[48]"
-              ></div>
-            </div>
+          <div class="p-4">
+            <h3 class="font-medium text-lg mb-1 line-clamp-1">{{ book.title }}</h3>
+            <p class="text-gray-500 text-sm">{{ book.pages }} halaman</p>
           </div>
         </div>
-        <span
-          class="block h-[19px] font-['Inter'] text-[16px] font-medium leading-[19px] text-[#000] relative text-left capitalize whitespace-nowrap z-[49] mt-[14px] mr-0 mb-0 ml-[14px]"
-          >jurus jitu mengelola emosi</span
-        ><span
-          class="block h-[17px] font-['Inter'] text-[14px] font-normal leading-[16.943px] text-[rgba(0,0,0,0.5)] relative text-left capitalize whitespace-nowrap z-50 mt-[14px] mr-0 mb-0 ml-[14px]"
-          >67 halaman</span
-        >
       </div>
-      <div
-        class="w-[243px] h-[271px] shrink-0 bg-[#fff] rounded-[10px] relative z-[52]"
-      >
-        <div
-          class="w-[242px] h-[195px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/7ReZsM3ypu.png)] bg-cover bg-no-repeat rounded-[10px] relative z-[53] mt-0 mr-0 mb-0 ml-px"
+
+      <!-- Load More Button -->
+      <div class="text-center mt-8">
+        <button
+          @click="loadMore"
+          v-if="visibleBooks < filteredBooks.length"
+          class="bg-green-400 hover:bg-green-500 text-black font-medium py-2 px-6 rounded-lg transition-colors duration-300"
         >
-          <div
-            class="w-[242px] h-[195px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/WACuU74ntG.png)] bg-cover bg-no-repeat rounded-[10px] absolute top-0 left-0 z-[54]"
-          >
-            <div
-              class="w-[85px] h-[37px] bg-[#29ff90] rounded-[12px] relative z-[55] mt-[148px] mr-0 mb-0 ml-[10px]"
-            >
-              <span
-                class="flex h-[17px] justify-start items-start font-['Inter'] text-[14px] font-normal leading-[16.943px] text-[rgba(0,0,0,0.5)] absolute top-[10px] left-[36px] text-left capitalize whitespace-nowrap z-[59]"
-              >
-                4.9/5</span
-              >
-              <div
-                class="w-[16px] h-[16px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/2fnaTbKgmD.png)] bg-cover bg-no-repeat absolute top-[10px] left-[10px] overflow-hidden z-[60]"
-              ></div>
-            </div>
-          </div>
-        </div>
-        <span
-          class="block h-[19px] font-['Inter'] text-[16px] font-medium leading-[19px] text-[#000] relative text-left capitalize whitespace-nowrap z-[61] mt-[14px] mr-0 mb-0 ml-[14px]"
-          >jurus jitu mengelola emosi</span
-        ><span
-          class="block h-[17px] font-['Inter'] text-[14px] font-normal leading-[16.943px] text-[rgba(0,0,0,0.5)] relative text-left capitalize whitespace-nowrap z-[62] mt-[14px] mr-0 mb-0 ml-[14px]"
-          >156 halaman</span
-        >
+          Lihat Selengkapnya
+        </button>
       </div>
-    </div>
-    <div
-      class="flex w-[1059px] h-[271px] justify-between items-center relative z-[103] mt-[103px] mr-0 mb-0 ml-[110px]"
-    >
-      <div
-        class="w-[243px] h-[271px] shrink-0 bg-[#fff] rounded-[10px] relative z-[65]"
-      >
-        <div
-          class="w-[242px] h-[195px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/kyU8anMJwv.png)] bg-cover bg-no-repeat rounded-[10px] relative z-[66] mt-0 mr-0 mb-0 ml-px"
-        >
-          <div
-            class="w-[242px] h-[195px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/cqEKsKHOYv.png)] bg-cover bg-no-repeat rounded-[10px] absolute top-0 left-0 z-[67]"
-          >
-            <div
-              class="w-[85px] h-[37px] bg-[#29ff90] rounded-[12px] relative z-[68] mt-[148px] mr-0 mb-0 ml-[10px]"
-            >
-              <span
-                class="flex h-[17px] justify-start items-start font-['Inter'] text-[14px] font-normal leading-[16.943px] text-[rgba(0,0,0,0.5)] absolute top-[10px] left-[36px] text-left capitalize whitespace-nowrap z-[72]"
-              >
-                4.9/5</span
-              >
-              <div
-                class="w-[16px] h-[16px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/HDsweVUGjO.png)] bg-cover bg-no-repeat absolute top-[10px] left-[10px] overflow-hidden z-[73]"
-              ></div>
-            </div>
-          </div>
-        </div>
-        <span
-          class="block h-[19px] font-['Inter'] text-[16px] font-medium leading-[19px] text-[#000] relative text-left capitalize whitespace-nowrap z-[74] mt-[14px] mr-0 mb-0 ml-[14px]"
-          >cantik itu luka</span
-        ><span
-          class="block h-[17px] font-['Inter'] text-[14px] font-normal leading-[16.943px] text-[rgba(0,0,0,0.5)] relative text-left capitalize whitespace-nowrap z-[75] mt-[14px] mr-0 mb-0 ml-[14px]"
-          >156 halaman</span
-        >
-      </div>
-      <div
-        class="w-[243px] h-[271px] shrink-0 bg-[#fff] rounded-[10px] relative z-[77]"
-      >
-        <div
-          class="w-[242px] h-[195px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/HFJi4oZjtR.png)] bg-cover bg-no-repeat rounded-[10px] relative z-[78] mt-0 mr-0 mb-0 ml-px"
-        >
-          <div
-            class="w-[242px] h-[195px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/4QPfO8qj5v.png)] bg-cover bg-no-repeat rounded-[10px] absolute top-0 left-0 z-[79]"
-          >
-            <div
-              class="w-[242px] h-[195px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/KbHAvGRm10.png)] bg-cover bg-no-repeat rounded-[10px] absolute top-0 left-0 z-[80]"
-            >
-              <div
-                class="w-[85px] h-[37px] bg-[#29ff90] rounded-[12px] relative z-[81] mt-[148px] mr-0 mb-0 ml-[10px]"
-              >
-                <span
-                  class="flex h-[17px] justify-start items-start font-['Inter'] text-[14px] font-normal leading-[16.943px] text-[rgba(0,0,0,0.5)] absolute top-[10px] left-[36px] text-left capitalize whitespace-nowrap z-[85]"
-                >
-                  4.8/5</span
-                >
-                <div
-                  class="w-[16px] h-[16px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/W0PUAbX0Ok.png)] bg-cover bg-no-repeat absolute top-[10px] left-[10px] overflow-hidden z-[86]"
-                ></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <span
-          class="block h-[19px] font-['Inter'] text-[16px] font-medium leading-[19px] text-[#000] relative text-left capitalize whitespace-nowrap z-[87] mt-[14px] mr-0 mb-0 ml-[14px]"
-          >when the sky is blooming</span
-        ><span
-          class="block h-[17px] font-['Inter'] text-[14px] font-normal leading-[16.943px] text-[rgba(0,0,0,0.5)] relative text-left capitalize whitespace-nowrap z-[88] mt-[14px] mr-0 mb-0 ml-[14px]"
-          >258 halaman</span
-        >
-      </div>
-      <div
-        class="w-[243px] h-[271px] shrink-0 bg-[#fff] rounded-[10px] relative z-[90]"
-      >
-        <div
-          class="w-[242px] h-[195px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/qQcj8MbHKb.png)] bg-cover bg-no-repeat rounded-[10px] relative z-[91] mt-0 mr-0 mb-0 ml-px"
-        >
-          <div
-            class="w-[242px] h-[195px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/thu2FY7YBO.png)] bg-cover bg-no-repeat rounded-[10px] relative z-[92] mt-0 mr-0 mb-0 ml-px"
-          >
-            <div
-              class="w-[242px] h-[195px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/HvHrE3ibgh.png)] bg-cover bg-no-repeat rounded-[10px] absolute top-0 left-0 z-[93]"
-            >
-              <div
-                class="w-[85px] h-[37px] bg-[#29ff90] rounded-[12px] relative z-[94] mt-[148px] mr-0 mb-0 ml-[9px]"
-              >
-                <span
-                  class="flex h-[17px] justify-start items-start font-['Inter'] text-[14px] font-normal leading-[16.943px] text-[rgba(0,0,0,0.5)] absolute top-[10px] left-[36px] text-left capitalize whitespace-nowrap z-[98]"
-                >
-                  4.9/5</span
-                >
-                <div
-                  class="w-[16px] h-[16px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/1Dk1ndRnB4.png)] bg-cover bg-no-repeat absolute top-[10px] left-[10px] overflow-hidden z-[99]"
-                ></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <span
-          class="block h-[19px] font-['Inter'] text-[16px] font-medium leading-[19px] text-[#000] relative text-left capitalize whitespace-nowrap z-[100] mt-[14px] mr-0 mb-0 ml-[14px]"
-          >seorang pria yang melalui </span
-        ><span
-          class="block h-[17px] font-['Inter'] text-[14px] font-normal leading-[16.943px] text-[rgba(0,0,0,0.5)] relative text-left capitalize whitespace-nowrap z-[101] mt-[14px] mr-0 mb-0 ml-[14px]"
-          >237 halaman</span
-        >
-      </div>
-      <div
-        class="w-[243px] h-[271px] shrink-0 bg-[#fff] rounded-[10px] relative z-[103]"
-      >
-        <div
-          class="w-[242px] h-[195px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/etaPnYMGwG.png)] bg-cover bg-no-repeat rounded-[10px] relative z-[104] mt-0 mr-0 mb-0 ml-px"
-        >
-          <div
-            class="w-[242px] h-[195px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/00Z6Htzzf9.png)] bg-cover bg-no-repeat rounded-[10px] absolute top-0 left-0 z-[105]"
-          >
-            <div
-              class="w-[242px] h-[195px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/fxPn1rt3Js.png)] bg-cover bg-no-repeat rounded-[10px] absolute top-0 left-0 z-[106]"
-            >
-              <div
-                class="w-[85px] h-[37px] bg-[#29ff90] rounded-[12px] relative z-[107] mt-[148px] mr-0 mb-0 ml-[10px]"
-              >
-                <span
-                  class="flex h-[17px] justify-start items-start font-['Inter'] text-[14px] font-normal leading-[16.943px] text-[rgba(0,0,0,0.5)] absolute top-[10px] left-[36px] text-left capitalize whitespace-nowrap z-[111]"
-                >
-                  4.9/5</span
-                >
-                <div
-                  class="w-[16px] h-[16px] bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/ZdeDyeXJie.png)] bg-cover bg-no-repeat absolute top-[10px] left-[10px] overflow-hidden z-[112]"
-                ></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <span
-          class="block h-[19px] font-['Inter'] text-[16px] font-medium leading-[19px] text-[#000] relative text-left capitalize whitespace-nowrap z-[113] mt-[14px] mr-0 mb-0 ml-[14px]"
-          >hujan</span
-        ><span
-          class="block h-[17px] font-['Inter'] text-[14px] font-normal leading-[16.943px] text-[rgba(0,0,0,0.5)] relative text-left capitalize whitespace-nowrap z-[114] mt-[14px] mr-0 mb-0 ml-[14px]"
-          >258 halaman</span
-        >
-      </div>
-    </div>
-    <div
-      class="flex w-[200px] h-[39px] justify-center items-center bg-[#29ff90] rounded-[5px] relative z-[13] mt-[32px] mr-0 mb-0 ml-[540px]"
-    >
-      <span
-        class="h-[19px] shrink-0 font-['Inter'] text-[16px] font-medium leading-[19px] text-[#000] relative text-left capitalize whitespace-nowrap z-[13]"
-        >lihat selengkapnya</span
-      >
-    </div>
+    </main>
   </div>
 </template>
-
-<script setup></script>

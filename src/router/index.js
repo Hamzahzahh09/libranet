@@ -5,16 +5,13 @@ import RegisterLibrary from '../components/view/RegisterLibrary.vue'
 import LibraryOnline from '../components/view/LibraryOnline.vue'
 import CollectionsLibrary from '@/components/view/CollectionsLibrary.vue'
 import DetailView from '@/components/view/DetailView.vue'
+import AnnouncementsLibrary from '@/components/view/AnnouncementsLibrary.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      redirect: '/library',
-    },
-    {
-      path: '/login',
       name: 'login',
       component: LoginLibrary,
     },
@@ -37,6 +34,11 @@ const router = createRouter({
       path: '/detail',
       name: 'detail',
       component: DetailView,
+    },
+    {
+      path: '/pengumuman',
+      name: 'pengumuman',
+      component: AnnouncementsLibrary,
     },
     {
       path: '/:pathMatch(.*)*',
