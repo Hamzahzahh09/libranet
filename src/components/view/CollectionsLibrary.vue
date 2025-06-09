@@ -1,49 +1,59 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import booksData from '@/data/buku.json'
 
-// Ambil data buku dan batasi 4 item
-const bookArray = Array.isArray(booksData) ? booksData : booksData.books
-const collectionBook = ref(bookArray.slice(0, 4))
+const enhancedBooks = booksData.books.map(book => {
+  let genre = 'Lainnya' // Default genre
 
+  // Tentukan genre berdasarkan judul atau author
+  if (book.title.includes('Dongeng')) genre = 'Anak'
+  else if (book.author.includes('Tere Liye') || book.author.includes('Eka Kurniawan') || book.author.includes('Ilana tan')) genre = 'Fiksi'
+  else if (book.title.includes('Mengelola Emosi') || book.title.includes('Great at Work')) genre = 'Pengembangan Diri'
+  else if (book.title.includes('Komputer Grafis')) genre = 'Teknologi'
+  else if (book.author.includes('Khaled Hosseini')) genre = 'Sastra Internasional'
+
+  return { ...book, genre }
+})
+
+const collectionBook = ref(enhancedBooks.slice(0, 24))
 const searchQuery = ref('')
-const filteredBooks = ref([...collectionBook.value])
+const selectedGenre = ref('Semua')
 const visibleBooks = ref(4)
-
 const router = useRouter()
 
-const navigateTo = (path) => {
-  router.push(path)
-}
+// Dapatkan semua genre unik
+const allGenres = computed(() => {
+  const genres = new Set(enhancedBooks.map(book => book.genre))
+  return ['Semua', ...Array.from(genres).sort()]
+})
 
-// Fungsi pencarian
-const searchBooks = () => {
-  if (searchQuery.value.trim() === '') {
-    filteredBooks.value = [...collectionBook.value]
-  } else {
-    filteredBooks.value = collectionBook.value.filter(book =>
-      book.title.toLowerCase().includes(searchQuery.value.toLowerCase())
-    )
+// Buku yang difilter
+const filteredBooks = computed(() => {
+  let result = [...collectionBook.value]
+
+  if (selectedGenre.value !== 'Semua') {
+    result = result.filter(book => book.genre === selectedGenre.value)
   }
-}
 
-// Fungsi "Lihat Selengkapnya"
-const loadMore = () => {
-  visibleBooks.value = Math.min(visibleBooks.value + 4, filteredBooks.value.length)
-}
+  if (searchQuery.value.trim() !== '') {
+    const query = searchQuery.value.toLowerCase()
+    result = result.filter(book =>
+      book.title.toLowerCase().includes(query) ||
+      book.author.toLowerCase().includes(query))
+  }
 
-// Buku yang sedang tampil
-const currentBooks = () => {
-  return filteredBooks.value.slice(0, visibleBooks.value)
-}
+  return result
+})
+
+const navigateTo = (path) => router.push(path)
+const loadMore = () => visibleBooks.value = Math.min(visibleBooks.value + 4, filteredBooks.value.length)
+const currentBooks = () => filteredBooks.value.slice(0, visibleBooks.value)
 </script>
-
 
 <template>
   <div class="min-h-screen bg-gray-50 font-sans">
-   <!-- Header yang lebih modern -->
-    <header class="sticky top-0 z-50 bg-white shadow-md">
+   <header class="sticky top-0 z-50 bg-white shadow-md">
       <div class="container mx-auto px-6 py-4 flex justify-between items-center">
         <div class="flex items-center space-x-3 cursor-pointer" @click="navigateTo('/')">
           <img src="https://i.imgur.com/2Nat6V1.png" alt="Libranet Logo" class="w-10 h-10">
@@ -102,76 +112,138 @@ const currentBooks = () => {
       </div>
     </header>
 
-    <!-- Main Content -->
     <main class="py-8 container mx-auto px-4 max-w-7xl">
-      <!-- Page Title -->
       <div class="text-center mb-8 relative">
         <h1 class="text-5xl font-bold mb-2">Koleksi</h1>
         <div class="w-48 h-1 bg-gradient-to-r from-green-400 to-blue-500 mx-auto"></div>
       </div>
 
-      <!-- Search and Filter -->
-      <div class="flex flex-col md:flex-row justify-between items-center mb-8 px-4">
-        <span class="text-lg font-medium mb-4 md:mb-0">Koleksi kamu :</span>
-        <div class="relative w-full md:w-64">
-          <input
-            v-model="searchQuery"
-            @input="searchBooks"
-            type="text"
-            placeholder="Cari buku..."
-            class="w-full pl-4 pr-10 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-400"
-          >
-          <img
-            src="https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/LyG3Uagnqe.png"
-            alt="Search"
-            class="absolute right-3 top-2.5 w-5 h-5"
-          >
-        </div>
-      </div>
+      <div class="flex flex-col lg:flex-row gap-8">
+        <!-- Sidebar Filter -->
+        <div class="w-full lg:w-64 bg-white p-6 rounded-xl shadow-md h-fit sticky top-24">
+          <h3 class="font-bold text-lg mb-4 text-gray-800">Filter Koleksi</h3>
 
-     <!-- Grid Buku -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4">
-        <div
-          v-for="(book, index) in currentBooks()"
-          :key="'collection-' + index"
-          class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group"
-        >
-          <div class="h-56 relative overflow-hidden">
-            <img
-              :src="book.image"
-              :alt="book.title"
-              class="w-full h-full object-cover transition duration-500 group-hover:scale-105"
+          <!-- Search -->
+          <div class="mb-6">
+            <label class="block text-sm font-medium text-gray-700 mb-2">Cari Buku</label>
+            <div class="relative">
+              <input
+                v-model="searchQuery"
+                type="text"
+                placeholder="Judul atau penulis..."
+                class="w-full pl-4 pr-10 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-400"
+              >
+              <img
+                src="https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/LyG3Uagnqe.png"
+                alt="Search"
+                class="absolute right-3 top-2.5 w-5 h-5"
+              >
+            </div>
+          </div>
+
+          <!-- Genre Filter -->
+          <div>
+            <h4 class="font-medium text-gray-700 mb-3">Genre Buku</h4>
+            <div class="space-y-2 max-h-60 overflow-y-auto pr-2">
+              <div
+                v-for="genre in allGenres"
+                :key="genre"
+                @click="selectedGenre = genre"
+                class="flex items-center cursor-pointer group"
+              >
+                <div
+                  class="w-5 h-5 rounded-full border-2 mr-3 flex-shrink-0 transition-all"
+                  :class="{
+                    'border-green-500': selectedGenre === genre,
+                    'border-gray-300 group-hover:border-green-400': selectedGenre !== genre
+                  }"
+                >
+                  <div
+                    v-if="selectedGenre === genre"
+                    class="w-3 h-3 rounded-full bg-green-500 m-auto"
+                  ></div>
+                </div>
+                <span
+                  class="text-gray-700 group-hover:text-green-600 transition-colors"
+                  :class="{'font-medium text-green-600': selectedGenre === genre}"
+                >
+                  {{ genre }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Konten Utama -->
+        <div class="flex-1">
+          <!-- Info Filter Aktif -->
+          <div class="flex justify-between items-center mb-6 bg-white p-4 rounded-lg shadow-sm">
+            <div>
+              <span class="text-gray-600">Menampilkan </span>
+              <span class="font-medium">{{ filteredBooks.length }}</span>
+              <span class="text-gray-600"> dari </span>
+              <span class="font-medium">{{ collectionBook.length }}</span>
+              <span class="text-gray-600"> buku</span>
+
+              <span v-if="selectedGenre !== 'Semua'" class="ml-4">
+                <span class="text-gray-600">Genre: </span>
+                <span class="font-medium text-green-600">{{ selectedGenre }}</span>
+              </span>
+            </div>
+          </div>
+
+          <!-- Grid Buku -->
+          <div v-if="filteredBooks.length > 0" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div
+              v-for="(book, index) in currentBooks()"
+              :key="'collection-' + index"
+              class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group"
             >
-            <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm rounded-xl px-3 py-1 flex items-center shadow-sm">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-yellow-500 mr-1" viewBox="0 0 20 20" fill="currentColor">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-              <span class="text-sm font-medium text-gray-700">{{ book.rating }}/5</span>
+              <div class="h-56 relative overflow-hidden">
+                <img
+                  :src="book.image"
+                  :alt="book.title"
+                  class="w-full h-full object-cover transition duration-500 group-hover:scale-105"
+                >
+                <div class="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm rounded-xl px-3 py-1 flex items-center shadow-sm">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-yellow-500 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                  <span class="text-sm font-medium text-gray-700">{{ book.rating }}/5</span>
+                </div>
+              </div>
+              <div class="p-5">
+                <h3 class="font-semibold text-lg text-gray-800 mb-2 line-clamp-1">{{ book.title }}</h3>
+                <p class="text-sm text-gray-500 mb-2 line-clamp-1">{{ book.author }}</p>
+                <div class="flex justify-between items-center">
+                  <span class="text-xs px-2 py-1 bg-gray-100 rounded-full text-gray-600">{{ book.genre }}</span>
+                  <button class="text-blue-600 hover:text-blue-800 text-sm font-medium transition">
+                    Detail
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="p-5">
-            <h3 class="font-semibold text-lg text-gray-800 mb-2 line-clamp-1">{{ book.title }}</h3>
-            <div class="flex justify-between items-center">
-              <span class="text-sm text-gray-500">{{ book.borrowed }} halaman</span>
-              <button class="text-blue-600 hover:text-blue-800 text-sm font-medium transition">
-                Detail
-              </button>
-            </div>
+
+          <!-- Pesan jika tidak ada hasil -->
+          <div v-else class="bg-white rounded-xl p-8 text-center shadow-md">
+            <img src="https://cdn-icons-png.flaticon.com/512/4076/4076478.png" alt="No results" class="w-24 h-24 mx-auto mb-4 opacity-70">
+            <h3 class="text-xl font-medium text-gray-700 mb-2">Tidak ditemukan buku</h3>
+            <p class="text-gray-500">Coba gunakan kata kunci lain atau pilih genre berbeda</p>
+          </div>
+
+          <!-- Load More Button -->
+          <div class="text-center mt-8">
+            <button
+              @click="loadMore"
+              v-if="visibleBooks < filteredBooks.length"
+              class="bg-green-400 hover:bg-green-500 text-black font-medium py-2 px-6 rounded-lg transition-colors duration-300"
+            >
+              Lihat Selengkapnya
+            </button>
           </div>
         </div>
-      </div>
-
-      <!-- Load More Button -->
-      <div class="text-center mt-8">
-        <button
-          @click="loadMore"
-          v-if="visibleBooks < filteredBooks.length"
-          class="bg-green-400 hover:bg-green-500 text-black font-medium py-2 px-6 rounded-lg transition-colors duration-300"
-        >
-          Lihat Selengkapnya
-        </button>
       </div>
     </main>
-  \
   </div>
 </template>

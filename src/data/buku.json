@@ -1,112 +1,204 @@
 {
   "books": [
     {
-    "title": "Jurus Jitu Mengelola Emosi",
-    "author": "Tidak diketahui",
-    "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/jurus.jpg",
-    "rating": 4.8,
-    "isNew": false,
-    "borrowed": 156,
-    "starIcon": "/icons/star.svg"
-  },
-  {
-    "title": "A Thousand Splendid Suns",
-    "author": "Khaled Hosseini",
-    "image": "https://id-test-11.slatic.net/p/db71f971a307a8980fc7a3b051e5f283.jpg",
-    "rating": 4.6,
-    "isNew": false,
-    "borrowed": 321,
-    "starIcon": "/icons/star.svg"
-  },
-  {
-    "title": "Dongeng anak Populer...",
-    "author": "Tidak diketahui",
-    "image": "https://bintangpusnas.perpusnas.go.id/api/getImage/978-602-5689-49-9.jpg",
-    "rating": 4.8,
-    "isNew": false,
-    "borrowed": 87
-,
-"starIcon": "/icons/star.svg"  },
-  {
-    "title": "Jurus Jitu Mengelola Emosi",
-    "author": "Tidak diketahui",
-    "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/Cover_Great_At_Work_2022_page-0001.jpg",
-    "rating": 4.8,
-    "isNew": false,
-    "borrowed": 110,
-    "starIcon": "/icons/star.svg"
-  },
-  {
-    "title": "Cantik Itu Luka",
-    "author": "Eka Kurniawan",
-    "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/9786020366517_Cantik-Itu-Luka-Hard-Cover---Limited-Edition.jpg",
-    "rating": 4.5,
-    "isNew": false,
-    "borrowed": 156,
-    "starIcon": "/icons/star.svg"
-  },
-  {
-    "title": "When The Sky Is Blooming",
-    "author": "Tidak diketahui",
-    "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/products/3hl-1-7imn.jpg",
-    "rating": 4.8,
-    "isNew": false,
-    "borrowed": 258,
-    "starIcon": "/icons/star.svg"
-  },
-  {
-    "title": "Seorang Pria Yang Melalui...",
-    "author": "Tidak diketahui",
-    "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/picture_meta/2023/12/1/fj23u35u6cqqpb2tpz5x34.jpg",
-    "rating": 4.6,
-    "isNew": false,
-    "borrowed": 237,
-    "starIcon": "/icons/star.svg"
-  },
-  {
-    "title": "Hujan",
-    "author": "Tere Liye",
-    "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/img20220905_11493451.jpg",
-    "rating": 4.6,
-    "isNew": false,
-    "borrowed": 258,
-    "starIcon": "/icons/star.svg"
-  },
-  {
-    "title": "Pulang (2023)",
-    "author": "Leila S. Chudori",
-    "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/picture_meta/2023/12/20/xoid3bznddxudnurccgqxi.jpg",
-    "rating": 4.6,
-    "isNew": false,
-    "borrowed": 462,
-    "starIcon": "/icons/star.svg"
-  },
-  {
-    "title": "3726 MDPL",
-    "author": "Tidak diketahui",
-    "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/products/9397p4603v.jpg",
-    "rating": 4.6,
-    "isNew": false,
-    "borrowed": 260,
-    "starIcon": "/icons/star.svg"
-  },
-  {
-    "title": "Komputer Grafis, Belajar...",
-    "author": "Tidak diketahui",
-    "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/KOMPUTER_GRAFIS.jpg",
-    "rating": 4.7,
-    "isNew": false,
-    "borrowed": 237,
-    "starIcon": "/icons/star.svg"
-  },
-  {
-    "title": "Malam Terakhir",
-    "author": "Tidak diketahui",
-    "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/img20220321_10525755.jpg",
-    "rating": 4.6,
-    "isNew": false,
-    "borrowed": 119,
-    "starIcon": "/icons/star.svg"
-  }
+      "title": "Jurus Jitu Mengelola Emosi",
+      "author": "Kin Lindner",
+      "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/jurus.jpg",
+      "rating": 4.8,
+      "isNew": false,
+      "borrowed": 156,
+      "starIcon": "/icons/star.svg",
+      "genre": "Pengembangan Diri"
+    },
+    {
+      "title": "A Thousand Splendid Suns",
+      "author": "Khaled Hosseini",
+      "image": "https://id-test-11.slatic.net/p/db71f971a307a8980fc7a3b051e5f283.jpg",
+      "rating": 4.6,
+      "isNew": false,
+      "borrowed": 321,
+      "starIcon": "/icons/star.svg",
+      "genre": "Sastra Internasional"
+    },
+    {
+      "title": "Dongeng anak Populer...",
+      "author": "Andrew Lang",
+      "image": "https://bintangpusnas.perpusnas.go.id/api/getImage/978-602-5689-49-9.jpg",
+      "rating": 4.8,
+      "isNew": false,
+      "borrowed": 87,
+      "starIcon": "/icons/star.svg",
+      "genre": "Anak"
+    },
+    {
+      "title": "Great at Work",
+      "author": "Morten T. Hansen",
+      "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/Cover_Great_At_Work_2022_page-0001.jpg",
+      "rating": 4.8,
+      "isNew": false,
+      "borrowed": 110,
+      "starIcon": "/icons/star.svg",
+      "genre": "Pengembangan Diri"
+    },
+    {
+      "title": "Cantik Itu Luka",
+      "author": "Eka Kurniawan",
+      "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/9786020366517_Cantik-Itu-Luka-Hard-Cover---Limited-Edition.jpg",
+      "rating": 4.5,
+      "isNew": false,
+      "borrowed": 156,
+      "starIcon": "/icons/star.svg",
+      "genre": "Fiksi Sastra"
+    },
+    {
+      "title": "When The Sky Is Blooming",
+      "author": "Ilana tan",
+      "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/products/3hl-1-7imn.jpg",
+      "rating": 4.8,
+      "isNew": false,
+      "borrowed": 258,
+      "starIcon": "/icons/star.svg",
+      "genre": "Fiksi Romantis"
+    },
+    {
+      "title": "Seorang Pria Yang Melalui...",
+      "author": "dr. Andreas Kurniawan, Sp.KJ",
+      "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/picture_meta/2023/12/1/fj23u35u6cqqpb2tpz5x34.jpg",
+      "rating": 4.6,
+      "isNew": false,
+      "borrowed": 237,
+      "starIcon": "/icons/star.svg",
+      "genre": "Psikologi"
+    },
+    {
+      "title": "Hujan",
+      "author": "Tere Liye",
+      "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/img20220905_11493451.jpg",
+      "rating": 4.6,
+      "isNew": false,
+      "borrowed": 258,
+      "starIcon": "/icons/star.svg",
+      "genre": "Fiksi Sastra"
+    },
+    {
+      "title": "Pulang (2023)",
+      "author": "Leila S. Chudori",
+      "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/picture_meta/2023/12/20/xoid3bznddxudnurccgqxi.jpg",
+      "rating": 4.6,
+      "isNew": false,
+      "borrowed": 462,
+      "starIcon": "/icons/star.svg",
+      "genre": "Fiksi Sejarah"
+    },
+    {
+      "title": "3726 MDPL",
+      "author": "Nurwina Sari",
+      "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/products/9397p4603v.jpg",
+      "rating": 4.6,
+      "isNew": false,
+      "borrowed": 260,
+      "starIcon": "/icons/star.svg",
+      "genre": "Petualangan"
+    },
+    {
+      "title": "Komputer Grafis, Belajar...",
+      "author": "Tonny Hidayat",
+      "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/KOMPUTER_GRAFIS.jpg",
+      "rating": 4.7,
+      "isNew": false,
+      "borrowed": 237,
+      "starIcon": "/icons/star.svg",
+      "genre": "Teknologi"
+    },
+    {
+      "title": "Malam Terakhir",
+      "author": "Leila S. Chudori",
+      "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/img20220321_10525755.jpg",
+      "rating": 4.6,
+      "isNew": false,
+      "borrowed": 119,
+      "starIcon": "/icons/star.svg",
+      "genre": "Fiksi Sastra"
+    },
+    {
+      "title": "Seporsi Mie Ayam Sebelum Mati",
+      "author": "Brian Khrisna",
+      "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/products/95ob5m98ur.jpg",
+      "rating": 4.7,
+      "isNew": true,
+      "borrowed": 0,
+      "starIcon": "/icons/star.svg",
+      "genre": "Fiksi Kontemporer"
+    },
+    {
+      "title": "Laut Bercerita",
+      "author": "Leila S. Chudori",
+      "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/9786024246945_Laut-Bercerita.png",
+      "rating": 4.8,
+      "isNew": true,
+      "borrowed": 0,
+      "starIcon": "/icons/star.svg",
+      "genre": "Fiksi Sejarah"
+    },
+    {
+      "title": "Tulus untuk orang yang salah",
+      "author": "Boy Chandra",
+      "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/0001_uAnpCBa.jpg",
+      "rating": 4.5,
+      "isNew": true,
+      "borrowed": 0,
+      "starIcon": "/icons/star.svg",
+      "genre": "Romantis"
+    },
+    {
+      "title": "The Things You Can See Only When You Slow Down",
+      "author": "Haemin Sunim",
+      "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/9786024813659_The_Things_You_Can_See_Only_When_You_Slow_Down-1.jpg",
+      "rating": 4.9,
+      "isNew": true,
+      "borrowed": 0,
+      "starIcon": "/icons/star.svg",
+      "genre": "Pengembangan Diri"
+    },
+    {
+      "title": "Timun Jelita",
+      "author": "Raditya Dika",
+      "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/products/3jun2vt22e.jpg",
+      "rating": 4.6,
+      "isNew": true,
+      "borrowed": 0,
+      "starIcon": "/icons/star.svg",
+      "genre": "Fiksi Humor"
+    },
+    {
+      "title": "Ayah Berjuang Sendiri Itu Capek!",
+      "author": "Adellia P. D.",
+      "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/product-metas/snab-g1-y2.jpg",
+      "rating": 4.7,
+      "isNew": true,
+      "borrowed": 0,
+      "starIcon": "/icons/star.svg",
+      "genre": "Parenting"
+    },
+    {
+      "title": "Sebuah Seni untuk Bersikap Bodo Amat",
+      "author": "Mark Manson",
+      "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/Handy_Book_1.png",
+      "rating": 4.8,
+      "isNew": true,
+      "borrowed": 0,
+      "starIcon": "/icons/star.svg",
+      "genre": "Pengembangan Diri"
+    },
+    {
+      "title": "Siapa Bilang Bicara Positif Itu Gampang: Kekuatan Ucapan dalam Mengubah Hidup",
+      "author": "Oh Su Hyang",
+      "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/9786024813659_The_Things_You_Can_See_Only_When_You_Slow_Down-1.jpg",
+      "rating": 4.7,
+      "isNew": true,
+      "borrowed": 0,
+      "starIcon": "/icons/star.svg",
+      "genre": "Motivasi"
+    }
   ]
 }
