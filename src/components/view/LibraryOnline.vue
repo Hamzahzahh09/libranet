@@ -263,7 +263,10 @@ const handleLogout = () => {
               <h3 class="font-semibold text-lg text-gray-800 mb-2 line-clamp-1">{{ book.title }}</h3>
               <div class="flex justify-between items-center">
                 <span class="text-sm text-gray-500">{{ book.borrowed }} halaman</span>
-                <router-link to="/detail" class="text-blue-600 hover:text-blue-800 text-sm font-medium transition">
+                <router-link
+                  :to="`/detail/${book.id}`"
+                  class="text-blue-600 hover:text-blue-800 text-sm font-medium transition"
+                >
                   Detail
                 </router-link>
               </div>

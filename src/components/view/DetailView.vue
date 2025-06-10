@@ -1,8 +1,18 @@
 <script setup>
-import { ref } from 'vue';
-import { useRouter } from 'vue-router';
+import { ref, computed } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
+import bukuData from '../../data/buku.json';
 
 const router = useRouter();
+const route = useRoute();
+
+// Ambil id dari route params
+const bookId = computed(() => Number(route.params.id));
+
+// Cari buku yang sesuai
+const book = computed(() => {
+  return bukuData.books.find(b => b.id === bookId.value);
+});
 
 // State untuk interaktivitas
 const hoverRating = ref(0);
@@ -10,12 +20,12 @@ const showFullSynopsis = ref(false);
 const isInCollection = ref(false);
 const showPreview = ref(false);
 
-// Sinopsis text
+// Sinopsis text (bisa diubah sesuai kebutuhan)
 const fullSynopsis = `Jurus Jitu Mengelola Emosi adalah buku pengembangan diri yang membahas cara memahami, menerima, dan mengelola emosi secara bijak. Buku ini mengajak pembaca untuk mengenali berbagai jenis emosi negatif seperti marah, cemas, dan sedih, serta memberikan strategi praktis untuk mengendalikannya tanpa menekannya. Dengan gaya bahasa yang ringan dan mudah dipahami, buku ini memadukan pendekatan psikologis dan nilai-nilai spiritual yang relevan dalam kehidupan sehari-hari. Penulis menyertakan berbagai kisah reflektif, studi kasus, dan latihan sederhana agar pembaca bisa langsung mempraktikkannya. Melalui buku ini, pembaca diajak untuk tidak menjadi budak emosi, melainkan menjadikan emosi sebagai kompas dalam berpikir dan bertindak. Buku ini cocok untuk siapa saja yang ingin lebih sabar, tenang, dan berdaya dalam menghadapi tekanan hidup. Seiring berjalannya waktu, pembaca akan menyadari bahwa ketenangan bukan datang dari luar, melainkan dari pemahaman mendalam terhadap diri sendiri. Jurus Jitu Mengelola Emosi bukan sekadar bacaan, tapi panduan hidup yang membantu kita menjadi pribadi yang lebih matang dan kuat secara emosional.`;
 const shortSynopsis = fullSynopsis.substring(0, 150) + '...';
 
 const getStarImage = (index) => {
-  const rating = hoverRating.value || 8.1;
+  const rating = hoverRating.value || (book.value ? book.value.rating : 0);
   const starValue = index + 1;
   return starValue <= Math.floor(rating)
     ? 'https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-09/bSfmqXJ5LX.png'
@@ -102,11 +112,11 @@ const addToCollection = () => {
 
     <!-- Main Content -->
     <main class="container mx-auto px-4 py-8">
-      <div class="bg-white rounded-xl shadow-md overflow-hidden p-6">
+      <div v-if="book" class="bg-white rounded-xl shadow-md overflow-hidden p-6">
         <div class="flex flex-col md:flex-row gap-8">
           <!-- Book Cover -->
           <div class="w-full md:w-1/3 flex flex-col items-center">
-            <img src="https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-09/UMVtUXqkwP.png" alt="Book Cover"
+            <img :src="book.image" :alt="book.title"
               class="w-full max-w-xs rounded-lg shadow-md cursor-pointer hover:scale-[1.02] transition-transform"
               @click="openBookPreview">
 
@@ -120,36 +130,35 @@ const addToCollection = () => {
                 </div>
               </div>
               <span class="text-lg font-medium text-gray-700">
-                {{ hoverRating || 8.1 }}
+                {{ hoverRating || book.rating }}
               </span>
             </div>
           </div>
 
           <!-- Book Details -->
           <div class="w-full md:w-2/3">
-            <h1 class="text-3xl font-bold text-gray-800 mb-4">Jurus Jitu Mengelola Emosi</h1>
+            <h1 class="text-3xl font-bold text-gray-800 mb-4">{{ book.title }}</h1>
             <h2 class="text-xl text-gray-600 mb-6">Buku Pengembangan Diri</h2>
 
             <!-- Metadata -->
-          <div class="flex flex-col gap-3 text-gray-700 mb-6">
-            <div class="flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pen-icon lucide-pen"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/></svg>
-              <span class="text-sm p-2">Ken Lindner</span>
+            <div class="flex flex-col gap-3 text-gray-700 mb-6">
+              <div class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pen-icon lucide-pen"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/></svg>
+                <span class="text-sm p-2">{{ book.author }}</span>
+              </div>
+              <div class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-icon lucide-book"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/></svg>
+                <span class="text-sm p-2">Tersedia 5 Eksemplar</span>
+              </div>
+              <div class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-round-icon lucide-user-round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg>
+                <span class="text-sm p-2">{{ book.borrowed }} Pembaca</span>
+              </div>
             </div>
-            <div class="flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-icon lucide-book"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/></svg>
-              <span class="text-sm p-2">Tersedia 5 Eksemplar</span>
-            </div>
-            <div class="flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-round-icon lucide-user-round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg>
-              <span class="text-sm p-2">352 Pembaca</span>
-            </div>
-          </div>
-
 
             <!-- Synopsis -->
             <div class="mb-8">
-              <h3 class="text-lg font-semibold text-gray-800 mb-2">Sinopsis</h3>
+              <h3 class="text-lg font-semibold text-gray-800 mb-2">{{ book.Sinopsis }}</h3>
               <p class="text-gray-700 leading-relaxed">
                 {{ showFullSynopsis ? fullSynopsis : shortSynopsis }}
                 <span class="text-blue-600 cursor-pointer hover:underline ml-1"
@@ -174,6 +183,9 @@ const addToCollection = () => {
           </div>
         </div>
       </div>
+      <div v-else class="text-center py-20 text-gray-500 text-xl">
+        Buku tidak ditemukan.
+      </div>
     </main>
 
     <!-- Book Preview Modal -->
@@ -184,7 +196,7 @@ const addToCollection = () => {
           @click="showPreview = false">
           &times;
         </button>
-        <img src="https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-09/UMVtUXqkwP.png" alt="Book cover"
+        <img :src="book.image" :alt="book.title"
           class="w-full h-auto max-h-[80vh] object-contain">
       </div>
     </div>

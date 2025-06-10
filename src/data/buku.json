@@ -1,204 +1,136 @@
 {
   "books": [
     {
-      "title": "Jurus Jitu Mengelola Emosi",
-      "author": "Kin Lindner",
-      "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/jurus.jpg",
-      "rating": 4.8,
-      "isNew": false,
-      "borrowed": 156,
-      "starIcon": "/icons/star.svg",
-      "genre": "Pengembangan Diri"
-    },
-    {
-      "title": "A Thousand Splendid Suns",
-      "author": "Khaled Hosseini",
-      "image": "https://id-test-11.slatic.net/p/db71f971a307a8980fc7a3b051e5f283.jpg",
-      "rating": 4.6,
-      "isNew": false,
-      "borrowed": 321,
-      "starIcon": "/icons/star.svg",
-      "genre": "Sastra Internasional"
-    },
-    {
-      "title": "Dongeng anak Populer...",
-      "author": "Andrew Lang",
-      "image": "https://bintangpusnas.perpusnas.go.id/api/getImage/978-602-5689-49-9.jpg",
-      "rating": 4.8,
-      "isNew": false,
-      "borrowed": 87,
-      "starIcon": "/icons/star.svg",
-      "genre": "Anak"
-    },
-    {
-      "title": "Great at Work",
-      "author": "Morten T. Hansen",
-      "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/Cover_Great_At_Work_2022_page-0001.jpg",
-      "rating": 4.8,
-      "isNew": false,
-      "borrowed": 110,
-      "starIcon": "/icons/star.svg",
-      "genre": "Pengembangan Diri"
-    },
-    {
-      "title": "Cantik Itu Luka",
-      "author": "Eka Kurniawan",
-      "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/9786020366517_Cantik-Itu-Luka-Hard-Cover---Limited-Edition.jpg",
-      "rating": 4.5,
-      "isNew": false,
-      "borrowed": 156,
-      "starIcon": "/icons/star.svg",
-      "genre": "Fiksi Sastra"
-    },
-    {
-      "title": "When The Sky Is Blooming",
-      "author": "Ilana tan",
-      "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/products/3hl-1-7imn.jpg",
-      "rating": 4.8,
-      "isNew": false,
-      "borrowed": 258,
-      "starIcon": "/icons/star.svg",
-      "genre": "Fiksi Romantis"
-    },
-    {
-      "title": "Seorang Pria Yang Melalui...",
-      "author": "dr. Andreas Kurniawan, Sp.KJ",
-      "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/picture_meta/2023/12/1/fj23u35u6cqqpb2tpz5x34.jpg",
-      "rating": 4.6,
-      "isNew": false,
-      "borrowed": 237,
-      "starIcon": "/icons/star.svg",
-      "genre": "Psikologi"
-    },
-    {
-      "title": "Hujan",
-      "author": "Tere Liye",
-      "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/img20220905_11493451.jpg",
-      "rating": 4.6,
-      "isNew": false,
-      "borrowed": 258,
-      "starIcon": "/icons/star.svg",
-      "genre": "Fiksi Sastra"
-    },
-    {
-      "title": "Pulang (2023)",
-      "author": "Leila S. Chudori",
-      "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/picture_meta/2023/12/20/xoid3bznddxudnurccgqxi.jpg",
-      "rating": 4.6,
-      "isNew": false,
-      "borrowed": 462,
-      "starIcon": "/icons/star.svg",
-      "genre": "Fiksi Sejarah"
-    },
-    {
-      "title": "3726 MDPL",
-      "author": "Nurwina Sari",
-      "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/products/9397p4603v.jpg",
-      "rating": 4.6,
-      "isNew": false,
-      "borrowed": 260,
-      "starIcon": "/icons/star.svg",
-      "genre": "Petualangan"
-    },
-    {
-      "title": "Komputer Grafis, Belajar...",
-      "author": "Tonny Hidayat",
-      "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/KOMPUTER_GRAFIS.jpg",
-      "rating": 4.7,
-      "isNew": false,
-      "borrowed": 237,
-      "starIcon": "/icons/star.svg",
-      "genre": "Teknologi"
-    },
-    {
-      "title": "Malam Terakhir",
-      "author": "Leila S. Chudori",
-      "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/img20220321_10525755.jpg",
-      "rating": 4.6,
-      "isNew": false,
-      "borrowed": 119,
-      "starIcon": "/icons/star.svg",
-      "genre": "Fiksi Sastra"
-    },
-    {
-      "title": "Seporsi Mie Ayam Sebelum Mati",
-      "author": "Brian Khrisna",
-      "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/products/95ob5m98ur.jpg",
-      "rating": 4.7,
-      "isNew": true,
-      "borrowed": 0,
-      "starIcon": "/icons/star.svg",
-      "genre": "Fiksi Kontemporer"
-    },
-    {
-      "title": "Laut Bercerita",
-      "author": "Leila S. Chudori",
-      "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/9786024246945_Laut-Bercerita.png",
-      "rating": 4.8,
-      "isNew": true,
-      "borrowed": 0,
-      "starIcon": "/icons/star.svg",
-      "genre": "Fiksi Sejarah"
-    },
-    {
-      "title": "Tulus untuk orang yang salah",
-      "author": "Boy Chandra",
-      "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/0001_uAnpCBa.jpg",
-      "rating": 4.5,
-      "isNew": true,
-      "borrowed": 0,
-      "starIcon": "/icons/star.svg",
-      "genre": "Romantis"
-    },
-    {
-      "title": "The Things You Can See Only When You Slow Down",
-      "author": "Haemin Sunim",
-      "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/9786024813659_The_Things_You_Can_See_Only_When_You_Slow_Down-1.jpg",
-      "rating": 4.9,
-      "isNew": true,
-      "borrowed": 0,
-      "starIcon": "/icons/star.svg",
-      "genre": "Pengembangan Diri"
-    },
-    {
-      "title": "Timun Jelita",
-      "author": "Raditya Dika",
-      "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/products/3jun2vt22e.jpg",
-      "rating": 4.6,
-      "isNew": true,
-      "borrowed": 0,
-      "starIcon": "/icons/star.svg",
-      "genre": "Fiksi Humor"
-    },
-    {
-      "title": "Ayah Berjuang Sendiri Itu Capek!",
-      "author": "Adellia P. D.",
-      "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/product-metas/snab-g1-y2.jpg",
-      "rating": 4.7,
-      "isNew": true,
-      "borrowed": 0,
-      "starIcon": "/icons/star.svg",
-      "genre": "Parenting"
-    },
-    {
-      "title": "Sebuah Seni untuk Bersikap Bodo Amat",
-      "author": "Mark Manson",
-      "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/Handy_Book_1.png",
-      "rating": 4.8,
-      "isNew": true,
-      "borrowed": 0,
-      "starIcon": "/icons/star.svg",
-      "genre": "Pengembangan Diri"
-    },
-    {
-      "title": "Siapa Bilang Bicara Positif Itu Gampang: Kekuatan Ucapan dalam Mengubah Hidup",
-      "author": "Oh Su Hyang",
-      "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/9786024813659_The_Things_You_Can_See_Only_When_You_Slow_Down-1.jpg",
-      "rating": 4.7,
-      "isNew": true,
-      "borrowed": 0,
-      "starIcon": "/icons/star.svg",
-      "genre": "Motivasi"
-    }
+    "id": 1,
+    "title": "Jurus Jitu Mengelola Emosi",
+    "author": "Tidak diketahui",
+    "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/jurus.jpg",
+    "rating": 4.8,
+    "isNew": false,
+    "borrowed": 156,
+    "starIcon": "/icons/star.svg",
+    "Sinopsis": "Jurus Jitu Mengelola Emosi adalah panduan praktis untuk memahami dan mengendalikan emosi dalam kehidupan sehari-hari. Ditulis dengan bahasa yang ringan namun sarat makna, buku ini mengajak pembaca mengenali berbagai bentuk emosi—baik positif maupun negatif—dan memberikan strategi konkret untuk meresponsnya dengan bijak."
+  },
+  {
+    "id": 2,
+    "title": "A Thousand Splendid Suns",
+    "author": "Khaled Hosseini",
+    "image": "https://id-test-11.slatic.net/p/db71f971a307a8980fc7a3b051e5f283.jpg",
+    "rating": 4.6,
+    "isNew": false,
+    "borrowed": 321,
+    "starIcon": "/icons/star.svg",
+    "Sinopsis": "Sebuah kisah menyentuh tentang dua perempuan Afghanistan—Mariam dan Laila—yang hidup dalam penderitaan akibat perang, kekerasan dalam rumah tangga, dan ketidakadilan gender. Meskipun berasal dari latar belakang berbeda, takdir mempertemukan mereka, dan persaudaraan mereka menjadi sumber harapan dan kekuatan."
+  },
+  {
+    "id": 3,
+    "title": "Dongeng anak Populer...",
+    "author": "Tidak diketahui",
+    "image": "https://bintangpusnas.perpusnas.go.id/api/getImage/978-602-5689-49-9.jpg",
+    "rating": 4.8,
+    "isNew": false,
+    "borrowed": 87,
+    "starIcon": "/icons/star.svg" ,
+    "Sinopsis":"Kumpulan cerita klasik anak-anak seperti Putri Salju, Cinderella, Si Kancil, dan lainnya. Cerita-cerita ini sarat pesan moral dan disampaikan dengan gaya bahasa yang sederhana dan imajinatif, cocok untuk membentuk karakter dan imajinasi anak." 
+  },
+  {
+    "id": 4,
+    "title": "at work",
+    "author": "Tidak diketahui",
+    "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/Cover_Great_At_Work_2022_page-0001.jpg",
+    "rating": 4.8,
+    "isNew": false,
+    "borrowed": 110,
+    "starIcon": "/icons/star.svg",
+    "Sinopsis": "Jika maksudmu buku motivasi atau panduan kerja, biasanya buku dengan judul ini berisi tips meningkatkan produktivitas, etos kerja, manajemen waktu, dan membangun karier yang sukses di lingkungan profesional."
+  },
+  {
+    "id": 5,
+    "title": "Cantik Itu Luka",
+    "author": "Eka Kurniawan",
+    "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/9786020366517_Cantik-Itu-Luka-Hard-Cover---Limited-Edition.jpg",
+    "rating": 4.5,
+    "isNew": false,
+    "borrowed": 156,
+    "starIcon": "/icons/star.svg",
+    "Sinopsis": "Novel realisme magis yang mengisahkan Dewi Ayu, seorang perempuan cantik yang bangkit dari kubur. Buku ini mengeksplorasi sejarah kelam Indonesia—kolonialisme, kekerasan, dan seksualitas—dengan gaya yang penuh simbolisme dan satire."
+  },
+  {
+    "id": 6,
+    "title": "When The Sky Is Blooming",
+    "author": "Tidak diketahui",
+    "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/products/3hl-1-7imn.jpg",
+    "rating": 4.8,
+    "isNew": false,
+    "borrowed": 258,
+    "starIcon": "/icons/star.svg",
+    "Sinopsis": "Jika ini adalah novel atau antologi puisi, kemungkinan besar berisi kisah tentang harapan, cinta, atau perjuangan hidup, dengan metafora langit sebagai simbol harapan yang tumbuh meskipun dalam kesulitan."
+  },
+  {
+    "id": 7,
+    "title": "Seorang Pria Yang Melalui...",
+    "author": "Tidak diketahui",
+    "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/picture_meta/2023/12/1/fj23u35u6cqqpb2tpz5x34.jpg",
+    "rating": 4.6,
+    "isNew": false,
+    "borrowed": 237,
+    "starIcon": "/icons/star.svg",
+    "Sinopsis": "Judul ini memberi kesan perjalanan hidup atau perjuangan seorang laki-laki menghadapi berbagai tantangan hidup, mungkin dalam bentuk narasi pribadi atau fiksi inspiratif."
+  },
+  {
+    "id": 8,
+    "title": "Hujan",
+    "author": "Tere Liye",
+    "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/img20220905_11493451.jpg",
+    "rating": 4.6,
+    "isNew": false,
+    "borrowed": 258,
+    "starIcon": "/icons/star.svg",
+    "Sinopsis": "Novel berlatar masa depan dengan tokoh utama Lail, yang kehilangan orang tuanya dalam bencana alam hebat. Cerita ini menggambarkan cinta, kehilangan, dan bagaimana manusia berdamai dengan kenangan serta trauma masa lalu."
+  },
+  {
+    "id": 9,
+    "title": "Pulang (2023)",
+    "author": "Leila S. Chudori",
+    "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/picture_meta/2023/12/20/xoid3bznddxudnurccgqxi.jpg",
+    "rating": 4.6,
+    "isNew": false,
+    "borrowed": 462,
+    "starIcon": "/icons/star.svg",
+    "Sinopsis": "Kalau ini novel Pulang dari Tere Liye, kisahnya tentang perjalanan Bujang menjadi pembunuh bayaran dalam organisasi rahasia, yang sarat filosofi, aksi, dan pertanyaan tentang pilihan hidup. Jika ini karya lain, mohon dikonfirmasi."
+  },
+  {
+    "id": 10,
+    "title": "3726 MDPL",
+    "author": "Tidak diketahui",
+    "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/products/9397p4603v.jpg",
+    "rating": 4.6,
+    "isNew": false,
+    "borrowed": 260,
+    "starIcon": "/icons/star.svg",
+    "Sinopsis": "Judul ini mengindikasikan kisah petualangan mendaki gunung setinggi 3.726 meter, mungkin tentang perjuangan fisik dan mental, persahabatan, dan refleksi hidup yang muncul selama perjalanan menuju puncak."
+  },
+  {
+    "id": 11,
+    "title": "Komputer Grafis, Belajar...",
+    "author": "Tidak diketahui",
+    "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/KOMPUTER_GRAFIS.jpg",
+    "rating": 4.7,
+    "isNew": false,
+    "borrowed": 237,
+    "starIcon": "/icons/star.svg",
+    "Sinopsis": "Kemungkinan merupakan buku pengantar atau panduan praktis belajar dasar-dasar komputer grafis, mulai dari teori warna, bentuk, hingga penggunaan perangkat lunak seperti Adobe Photoshop, CorelDRAW, atau Blender."
+  },
+  {
+    "id": 12,
+    "title": "Malam Terakhir",
+    "author": "Tidak diketahui",
+    "image": "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/items/img20220321_10525755.jpg",
+    "rating": 4.6,
+    "isNew": false,
+    "borrowed": 119,
+    "starIcon": "/icons/star.svg",
+    "Sinopsis": "Judul ini memberi kesan cerita reflektif, bisa tentang perpisahan, kematian, atau momen penting dalam hidup seseorang yang terjadi di malam terakhir. Nuansa emosional dan kontemplatif sangat kental."
+  }
   ]
 }
