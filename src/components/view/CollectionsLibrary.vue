@@ -21,6 +21,8 @@ const searchQuery = ref('')
 const selectedGenre = ref('Semua')
 const visibleBooks = ref(4)
 const router = useRouter()
+const showAccountDropdown = ref(false)
+const dropdownRef = ref(null)
 
 // Dapatkan semua genre unik
 const allGenres = computed(() => {
@@ -46,6 +48,17 @@ const filteredBooks = computed(() => {
   return result
 })
 
+const handleLogout = () => {
+  // Hapus data dari localStorage
+  localStorage.removeItem('userProfileData')
+
+  // Redirect ke halaman login
+  router.push('/login')
+
+  // Tampilkan pesan logout (opsional)
+  alert('Anda telah logout')
+}
+
 const navigateTo = (path) => router.push(path)
 const loadMore = () => visibleBooks.value = Math.min(visibleBooks.value + 4, filteredBooks.value.length)
 const currentBooks = () => filteredBooks.value.slice(0, visibleBooks.value)
@@ -55,58 +68,78 @@ const currentBooks = () => filteredBooks.value.slice(0, visibleBooks.value)
   <div class="min-h-screen bg-gray-50 font-sans">
    <header class="sticky top-0 z-50 bg-white shadow-md">
       <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-        <div class="flex items-center space-x-3 cursor-pointer" @click="navigateTo('/')">
+        <div class="flex items-center space-x-3 cursor-pointer" @click="navigateTo('/library')">
           <img src="https://i.imgur.com/2Nat6V1.png" alt="Libranet Logo" class="w-10 h-10">
           <span class="text-2xl font-semibold text-blue-900">Libranet</span>
         </div>
 
         <nav class="hidden md:flex space-x-8">
-          <router-link
-            to="/library"
+          <router-link to="/library"
             class="text-lg font-semibold text-gray-700 hover:text-blue-600 transition relative py-2"
-            active-class="text-blue-600 font-bold"
-            exact
-          >
+            active-class="text-blue-600 font-bold" exact>
             Beranda
-            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
           </router-link>
-          <router-link
-            to="/pengumuman"
+          <router-link to="/pengumuman"
             class="text-lg font-semibold text-gray-700 hover:text-blue-600 transition relative py-2"
-            active-class="text-blue-600 font-bold"
-          >
+            active-class="text-blue-600 font-bold">
             Pengumuman
           </router-link>
-          <router-link
-            to="/collection"
+          <router-link to="/collection"
             class="text-lg font-semibold text-gray-700 hover:text-blue-600 transition relative py-2"
-            active-class="text-blue-600 font-bold"
-          >
+            active-class="text-blue-600 font-bold">
             Koleksi
           </router-link>
-          <router-link
-            to="/populer"
+          <router-link to="/populer"
             class="text-lg font-semibold text-gray-700 hover:text-blue-600 transition relative py-2"
-            active-class="text-blue-600 font-bold"
-          >
+            active-class="text-blue-600 font-bold">
             Populer
           </router-link>
         </nav>
 
         <div class="flex items-center space-x-6">
           <div class="relative">
-            <img
-              src="https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/JzZcgNsGvt.png"
-              alt="Notification"
-              class="w-9 h-9 rounded-full cursor-pointer hover:opacity-80 transition"
-            >
+            <img src="https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/JzZcgNsGvt.png" alt="Notification"
+              class="w-9 h-9 rounded-full cursor-pointer hover:opacity-80 transition">
             <span class="absolute top-0 right-0 w-3 h-3 bg-red-500 rounded-full"></span>
           </div>
-          <div class="flex items-center space-x-2 cursor-pointer group">
-            <span class="text-lg font-semibold text-gray-700 group-hover:text-blue-600 transition">Account</span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500 group-hover:text-blue-600 transition" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-            </svg>
+
+          <!-- Account Dropdown -->
+          <div class="relative" ref="dropdownRef">
+            <div
+              class="flex items-center space-x-2 cursor-pointer group"
+              @click="showAccountDropdown = !showAccountDropdown"
+              aria-haspopup="true"
+              :aria-expanded="showAccountDropdown.toString()"
+              tabindex="0"
+              @keydown.enter.space.prevent="showAccountDropdown = !showAccountDropdown"
+            >
+              <span class="text-lg font-semibold text-gray-700 group-hover:text-blue-600 transition">Account</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500 group-hover:text-blue-600 transition"
+                viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd" />
+              </svg>
+            </div>
+
+            <!-- Dropdown Menu -->
+            <div v-if="showAccountDropdown" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
+              <router-link to="/profile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" @click="showAccountDropdown = false">
+                Profil Saya
+              </router-link>
+              <router-link to="/settings" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" @click="showAccountDropdown = false">
+                Pengaturan
+              </router-link>
+              <button @click="handleLogout"
+                class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                </svg>
+                Logout
+              </button>
+            </div>
           </div>
         </div>
       </div>

@@ -12,32 +12,50 @@ const form = reactive({
 })
 
 const handleRegister = () => {
+  // Validasi
   if (form.password !== form.confirmPassword) {
-    alert('Password dan konfirmasi tidak cocok!');
-    return;
+    alert('Password dan konfirmasi tidak cocok!')
+    return
   }
 
-  const users = JSON.parse(localStorage.getItem('users')) || [];
+  try {
+    // Ambil data user yang sudah terdaftar atau buat array baru
+    const users = JSON.parse(localStorage.getItem('users')) || []
 
-  users.push({
-    name: form.name,
-    email: form.email,
-    password: form.password
-  });
+    // Cek apakah email sudah terdaftar
+    const isEmailExist = users.some(user => user.email === form.email)
+    if (isEmailExist) {
+      alert('Email sudah terdaftar!')
+      return
+    }
 
-  localStorage.setItem('users', JSON.stringify(users));
-  alert('Pendaftaran berhasil!');
+    // Tambahkan user baru (Dalam production, password HARUS di-hash dulu)
+    users.push({
+      id: Date.now().toString(), // ID unik
+      name: form.name,
+      email: form.email,
+      password: form.password // ⚠️ Di real app, gunakan bcrypt untuk hashing
+    })
 
-  form.name = '';
-  form.email = '';
-  form.password = '';
-  form.confirmPassword = '';
+    // Simpan ke localStorage
+    localStorage.setItem('users', JSON.stringify(users))
 
-  router.push('/LibraryOnline'); // ✅ ini harus sama dengan path di router
+    // Set status login
+    localStorage.setItem('currentUser', JSON.stringify({
+      email: form.email,
+      name: form.name
+    }))
+
+    alert('Pendaftaran berhasil!')
+    router.push('/LibraryOnline')
+  } catch (error) {
+    console.error('Registration error:', error)
+    alert('Terjadi kesalahan saat pendaftaran')
+  }
 }
 
 const handleGoogleRegister = () => {
-  alert("Fitur Google Register belum tersedia 🙏");
+  alert("Fitur Google Register belum tersedia 🙏")
 }
 </script>
 
@@ -115,7 +133,7 @@ const handleGoogleRegister = () => {
           <div class="mt-6 text-center">
             <p class="text-sm text-gray-600">
               Sudah punya akun?
-              <a @click="$emit('goToLogin')"
+              <a href="/login"
                 class="text-blue-600 hover:text-blue-800 font-medium transition-colors cursor-pointer">
                 Masuk di sini
               </a>

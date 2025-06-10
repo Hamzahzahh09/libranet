@@ -9,7 +9,7 @@ const isBookmarked = ref(false)
 const isLiked = ref(false)
 const likeCount = ref(245)
 const showBackToTop = ref(false)
-const currentPage = ref(1)
+const currentPage = ref(2)
 
 const navigateTo = (path) => {
   router.push(path)
@@ -243,7 +243,7 @@ onUnmounted(() => {
                 <span class="text-sm text-gray-500">10 Juni 2025</span>
               </div>
               <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight mb-2">
-                Jangan Pernah Menyerah – Karena Proses Tidak Pernah Mengkhianati Hasil
+                Bangun dari Kegagalan, Lari menuju Harapan
               </h1>
               <p class="text-gray-600">Ditulis oleh Admin Libranet</p>
             </div>
@@ -275,35 +275,21 @@ onUnmounted(() => {
         <!-- Article Content -->
         <article class="prose prose-lg max-w-none p-6 sm:p-8">
           <p class="text-gray-800 leading-relaxed mb-6">
-            Dalam hidup, setiap orang pasti akan menghadapi rintangan. Ada kalanya jalan terasa mulus dan penuh semangat, tetapi ada juga saat di mana segalanya terasa gelap dan menyakitkan. Namun satu hal yang harus selalu diingat: tidak ada perjuangan yang sia-sia, dan tidak ada proses yang mengkhianati hasil.
+            Kadang hidup tidak berjalan sesuai rencana. Kita sudah berusaha keras, berdoa siang dan malam, namun hasilnya tetap tidak seperti yang diharapkan. Mungkin gagal di ujian penting, tidak lolos seleksi beasiswa, ditolak dalam lomba, atau merasa tidak dihargai setelah bekerja keras. Saat itu terjadi, mudah sekali untuk merasa putus asa. Rasanya seperti dunia tidak adil, seperti semua usaha tidak berarti apa-apa.
           </p>
 
           <p class="text-gray-800 leading-relaxed mb-6">
-            Banyak orang menyerah bukan karena mereka tidak mampu, tapi karena mereka terlalu cepat berhenti. Padahal, sukses sering kali hanya berjarak satu langkah dari kegagalan. Sering kali, tepat ketika seseorang ingin menyerah, itu sebenarnya adalah saat ia paling dekat dengan keberhasilan. Namun karena tidak tahan dengan rasa lelah, hinaan, atau keraguan dari orang lain, ia memilih mundur.
+            Namun di balik setiap kegagalan, selalu ada pelajaran. Kadang kita tidak menyadari bahwa kegagalan itu justru menjauhkan kita dari sesuatu yang buruk, dan mendekatkan kita pada sesuatu yang lebih baik. Gagal bukan berarti kamu tidak berbakat, tapi mungkin kamu sedang diarahkan ke jalan yang lebih tepat. Tuhan tahu kapan waktunya kamu berhasil, dan kapan waktunya kamu belajar.
+Jangan takut gagal. Takutlah jika kamu tidak pernah mencoba. Karena orang yang tidak pernah mencoba, tidak akan pernah tahu sejauh mana kemampuannya. Keberanian bukan berarti tidak pernah takut, tapi tetap melangkah walau hati penuh keraguan.
           </p>
 
           <p class="text-gray-800 leading-relaxed mb-6">
-            Bayangkan sebuah batu besar yang terus dipukul dengan palu. Puluhan, bahkan ratusan kali palu menghantam batu itu, namun tidak terlihat perubahan. Tetapi di pukulan ke seratus satu, batu itu akhirnya pecah. Bukan karena pukulan terakhir saja yang kuat, tapi karena akumulasi dari semua pukulan sebelumnya. Begitu pula dengan perjuangan dalam hidup. Hasil yang terlihat hari ini adalah buah dari usaha yang mungkin telah dimulai sejak lama, meski tidak semua orang menyadarinya.
+            Banyak tokoh besar di dunia yang mengalami kegagalan berulang kali. Tapi mereka tidak menyerah. Mereka belajar, bangkit, dan mencoba lagi. Mereka percaya bahwa nilai dari seseorang tidak ditentukan oleh hasil satu kali ujian, satu kali kegagalan, atau satu kali penolakan. Nilai seseorang ditentukan oleh seberapa besar ia mau belajar dari kesalahan, dan seberapa kuat ia bertahan ketika keadaannya sulit.
           </p>
 
           <p class="text-gray-800 leading-relaxed mb-6">
-            Kesuksesan tidak datang secara instan. Butuh waktu, kesabaran, ketekunan, dan keyakinan yang kuat. Dalam prosesnya, pasti ada luka, kegagalan, dan air mata. Tetapi justru dari semua itu, seseorang akan tumbuh menjadi lebih kuat. Rasa sakit bukan untuk ditakuti, melainkan untuk dijadikan pelajaran. Kegagalan bukan akhir dari segalanya, tapi bagian dari perjalanan menuju sukses.
-          </p>
-
-          <p class="text-gray-800 leading-relaxed mb-6">
-            Kita juga harus belajar menghargai proses. Banyak orang ingin langsung sukses tanpa mau bekerja keras. Padahal, proseslah yang membentuk karakter. Proses mengajarkan disiplin, mengasah kemampuan, dan menguatkan mental. Saat seseorang berani melalui proses, maka ia sedang mempersiapkan diri untuk menerima hasil yang pantas.
-          </p>
-
-          <p class="text-gray-800 leading-relaxed mb-6">
-            Tak kalah penting, jangan terlalu pedulikan kata orang. Dunia ini penuh dengan suara – suara yang bisa melemahkan semangat. Akan ada orang yang meremehkan, mencibir, bahkan berharap kita gagal. Tapi ingat, mimpi adalah milikmu, bukan milik mereka. Yang menjalani perjuangan adalah dirimu, bukan mereka. Jadi, selama langkahmu ada di jalan yang benar, teruslah maju.
-          </p>
-
-          <p class="text-gray-800 leading-relaxed mb-6">
-            Hidup tidak selalu adil, tapi hidup selalu memberi kesempatan kepada mereka yang mau berusaha. Setiap pagi adalah kesempatan baru untuk bangkit. Setiap hari adalah kesempatan untuk belajar. Dan setiap malam adalah waktu untuk merenung dan bersyukur.
-          </p>
-
-          <p class="text-gray-800 leading-relaxed">
-            Maka, apa pun yang kamu hadapi hari ini – entah itu ujian sekolah, tekanan hidup, rasa minder, atau kegagalan – jangan biarkan itu mematahkan semangatmu. Kamu boleh lelah, kamu boleh menangis, tapi jangan pernah berhenti.
+            Kamu pun bisa menjadi seperti itu. Mungkin sekarang kamu masih merasa kecil, belum yakin dengan masa depanmu, atau merasa tertinggal dari orang lain. Tapi ingat, setiap orang punya waktunya masing-masing. Hidup bukan perlombaan siapa yang lebih cepat, tapi tentang siapa yang tetap bertahan sampai akhir.
+Terus asah dirimu. Belajar, gagal, coba lagi, dan terus melangkah. Mimpi bukan hanya milik mereka yang pintar atau punya uang. Mimpi adalah milik mereka yang tidak menyerah.
           </p>
         </article>
 

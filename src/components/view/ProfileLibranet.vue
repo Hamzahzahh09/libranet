@@ -5,10 +5,6 @@ import { onClickOutside } from '@vueuse/core'
 
 const router = useRouter()
 
-onClickOutside(dropdownRef, () => {
-  showAccountDropdown.value = false
-})
-
 // State management
 const editMode = ref(false)
 const isSubmitting = ref(false)
@@ -17,7 +13,6 @@ const profileImagePreview = ref(null)
 const newGenre = ref('')
 const showAccountDropdown = ref(false)
 const dropdownRef = ref(null)
-
 
 // Default data
 const defaultForm = {
@@ -51,7 +46,6 @@ const loadFormData = () => {
   return defaultForm
 }
 
-
 const handleLogout = () => {
   // Hapus data dari localStorage
   localStorage.removeItem('userProfileData')
@@ -63,7 +57,7 @@ const handleLogout = () => {
   alert('Anda telah logout')
 }
 
-// Initialize form with saved data or defaults
+
 const originalForm = loadFormData()
 const form = reactive({ ...originalForm })
 
@@ -181,13 +175,18 @@ const formatDate = (date) => {
   }
   return date.toLocaleDateString('id-ID')
 }
+
+// Close dropdown when clicking outside
+onClickOutside(dropdownRef, () => {
+  showAccountDropdown.value = false
+})
 </script>
 
 <template>
   <div class="min-h-screen bg-gray-50 font-sans">
     <header class="sticky top-0 z-50 bg-white shadow-md">
       <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-        <div class="flex items-center space-x-3 cursor-pointer" @click="navigateTo('/')">
+        <div class="flex items-center space-x-3 cursor-pointer" @click="navigateTo('/library')">
           <img src="https://i.imgur.com/2Nat6V1.png" alt="Libranet Logo" class="w-10 h-10">
           <span class="text-2xl font-semibold text-blue-900">Libranet</span>
         </div>
@@ -215,7 +214,6 @@ const formatDate = (date) => {
           </router-link>
         </nav>
 
-        <!-- Ganti bagian ini di header -->
         <div class="flex items-center space-x-6">
           <div class="relative">
             <img src="https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-05/JzZcgNsGvt.png" alt="Notification"
@@ -223,44 +221,44 @@ const formatDate = (date) => {
             <span class="absolute top-0 right-0 w-3 h-3 bg-red-500 rounded-full"></span>
           </div>
 
-           <!-- Account Dropdown -->
-  <div class="relative" ref="dropdownRef">
-    <div
-      class="flex items-center space-x-2 cursor-pointer group"
-      @click="showAccountDropdown = !showAccountDropdown"
-      aria-haspopup="true"
-      :aria-expanded="showAccountDropdown.toString()"
-      tabindex="0"
-      @keydown.enter.space.prevent="showAccountDropdown = !showAccountDropdown"
-    >
-      <span class="text-lg font-semibold text-gray-700 group-hover:text-blue-600 transition">Account</span>
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500 group-hover:text-blue-600 transition"
-        viewBox="0 0 20 20" fill="currentColor">
-        <path fill-rule="evenodd"
-          d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-          clip-rule="evenodd" />
-      </svg>
-    </div>
+          <!-- Account Dropdown -->
+          <div class="relative" ref="dropdownRef">
+            <div
+              class="flex items-center space-x-2 cursor-pointer group"
+              @click="showAccountDropdown = !showAccountDropdown"
+              aria-haspopup="true"
+              :aria-expanded="showAccountDropdown.toString()"
+              tabindex="0"
+              @keydown.enter.space.prevent="showAccountDropdown = !showAccountDropdown"
+            >
+              <span class="text-lg font-semibold text-gray-700 group-hover:text-blue-600 transition">Account</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500 group-hover:text-blue-600 transition"
+                viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd" />
+              </svg>
+            </div>
 
-    <!-- Dropdown Menu -->
-    <div v-if="showAccountDropdown" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
-      <router-link to="/profile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" @click="showAccountDropdown = false">
-        Profil Saya
-      </router-link>
-      <router-link to="/settings" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" @click="showAccountDropdown = false">
-        Pengaturan
-      </router-link>
-      <button @click="handleLogout"
-        class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24"
-          stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-        </svg>
-        Logout
-      </button>
-    </div>
-  </div>div>
+            <!-- Dropdown Menu -->
+            <div v-if="showAccountDropdown" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
+              <router-link to="/profile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" @click="showAccountDropdown = false">
+                Profil Saya
+              </router-link>
+              <router-link to="/settings" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" @click="showAccountDropdown = false">
+                Pengaturan
+              </router-link>
+              <button @click="handleLogout"
+                class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                </svg>
+                Logout
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </header>

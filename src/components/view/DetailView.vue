@@ -37,6 +37,7 @@ const openBookPreview = () => {
 };
 
 const readNow = () => {
+  router.push('/baca')
   console.log('Membaca buku sekarang');
 };
 
@@ -50,7 +51,7 @@ const addToCollection = () => {
     <!-- Header -->
     <header class="sticky top-0 z-50 bg-white shadow-md">
       <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-        <div class="flex items-center space-x-3 cursor-pointer" @click="navigateTo('/')">
+        <div class="flex items-center space-x-3 cursor-pointer" @click="navigateTo('/library')">
           <img src="https://i.imgur.com/2Nat6V1.png" alt="Libranet Logo" class="w-10 h-10">
           <span class="text-2xl font-semibold text-blue-900">Libranet</span>
         </div>

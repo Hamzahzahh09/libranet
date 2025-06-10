@@ -8,6 +8,9 @@ import DetailView from '@/components/view/DetailView.vue'
 import AnnouncementsLibrary from '@/components/view/AnnouncementsLibrary.vue'
 import PopularLibrary from '@/components/view/PopularLibrary.vue'
 import ProfileLibranet from '@/components/view/ProfileLibranet.vue'
+import EbookLibrary from '@/components/view/EbookLibrary.vue'
+import EbookLibrary2 from '@/components/view/EbookLibrary2.vue'
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -36,6 +39,16 @@ const router = createRouter({
       path: '/detail',
       name: 'detail',
       component: DetailView,
+    },
+    {
+      path: '/baca',
+      name: 'baca',
+      component: EbookLibrary,
+    },
+    {
+      path: '/baca/2',
+      name: 'baca2',
+      component: EbookLibrary2,
     },
     {
       path: '/pengumuman',

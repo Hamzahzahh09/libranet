@@ -1,75 +1,77 @@
 <script setup>
-import { reactive, ref, onMounted } from 'vue'
+import { reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
+
 const router = useRouter()
 
 const loginForm = reactive({
   email: '',
-  password: '',
+  password: ''
 })
 
 const rememberMe = ref(false)
+const errorMessage = ref('')
 const showPassword = ref(false)
 const isLoading = ref(false)
 const showSuccess = ref(false)
 
-onMounted(() => {
-  const savedLogin = JSON.parse(localStorage.getItem('savedLogin'))
-  if (savedLogin) {
-    loginForm.email = savedLogin.email
-    loginForm.password = savedLogin.password
-    rememberMe.value = true
-  }
-})
-
-function handleLogin() {
-  console.log('Login started') // Debug 1
-  isLoading.value = true
-
-  setTimeout(() => {
-    console.log('Login simulation complete') // Debug 2
-    isLoading.value = false
-    showSuccess.value = true
-
-    // Debug localStorage sebelum update
-    console.log('Before auth:', {
-      auth_token: localStorage.getItem('auth_token'),
-      savedLogin: localStorage.getItem('savedLogin')
-    })
-
-    localStorage.setItem('auth_token', 'token_simulasi_123')
-
-    if (rememberMe.value) {
-      localStorage.setItem('savedLogin', JSON.stringify({
-        email: loginForm.email,
-        password: loginForm.password,
-      }))
-    }
-
-    // Debug localStorage setelah update
-    console.log('After auth:', {
-      auth_token: localStorage.getItem('auth_token'),
-      savedLogin: localStorage.getItem('savedLogin')
-    })
-
-    // Debug sebelum redirect
-    console.log('Attempting redirect to /library')
-
-    router.push('/library').then(() => {
-      console.log('Redirect successful') // Debug 3
-    }).catch(err => {
-      console.error('Redirect failed:', err) // Debug 4
-    })
-  }, 1500)
-}
-
-function closeAlert() {
+const closeAlert = () => {
   showSuccess.value = false
 }
 
-// Tambahkan stub untuk Google Login
-function handleGoogleLogin() {
-  alert('Fitur login dengan Google belum tersedia.')
+const handleLogin = () => {
+  try {
+    errorMessage.value = ''
+    isLoading.value = true
+
+    setTimeout(() => {
+      // Validasi input
+      if (!loginForm.email || !loginForm.password) {
+        errorMessage.value = 'Email dan password harus diisi'
+        isLoading.value = false
+        return
+      }
+
+      // Ambil data user dari localStorage
+      const users = JSON.parse(localStorage.getItem('users')) || []
+
+      // Cari user yang sesuai
+      const foundUser = users.find(user =>
+        user.email === loginForm.email &&
+        user.password === loginForm.password
+      )
+
+      if (!foundUser) {
+        errorMessage.value = 'Email atau password salah'
+        isLoading.value = false
+        return
+      }
+
+      // Simpan data login
+      localStorage.setItem('currentUser', JSON.stringify({
+        email: foundUser.email,
+        name: foundUser.name
+      }))
+
+      if (rememberMe.value) {
+        localStorage.setItem('rememberedEmail', loginForm.email)
+      } else {
+        localStorage.removeItem('rememberedEmail')
+      }
+
+      // Tampilkan alert sukses
+      showSuccess.value = true
+      isLoading.value = false
+
+      setTimeout(() => {
+        router.push('/library')
+      }, 1500)
+    }, 1000) // simulasi delay
+  } catch (error) {
+    console.error('Login error:', error)
+    errorMessage.value = 'Terjadi kesalahan saat login'
+    isLoading.value = false
+  }
 }
 </script>
 
@@ -108,6 +110,14 @@ function handleGoogleLogin() {
         <div class="bg-white rounded-xl shadow-lg p-8">
           <h2 class="text-2xl font-bold text-gray-900 mb-2">Masuk ke Akun Anda</h2>
           <p class="text-gray-600 mb-6">Silakan masuk dengan email dan password Anda</p>
+
+          <div v-if="errorMessage"
+            class="mb-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative flex items-center">
+            <svg class="h-5 w-5 mr-2 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+            <span>{{ errorMessage }}</span>
+          </div>
 
           <form @submit.prevent="handleLogin">
             <div class="mb-4">
@@ -176,7 +186,7 @@ function handleGoogleLogin() {
             <p class="text-sm text-gray-600">
               Belum punya akun?
               <!-- Ganti router-link daftar sekarang -->
-              <a @click="$emit('goToRegister')"
+              <a href="/register"
                 class="text-blue-600 hover:text-blue-800 font-medium transition-colors cursor-pointer">
                 Daftar sekarang
               </a>
